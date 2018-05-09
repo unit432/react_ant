@@ -20,17 +20,22 @@
     "eject": "react-scripts eject"
   },
   "devDependencies": {
-    "@babel/plugin-syntax-dynamic-import": "^7.0.0-beta.46",
+    "babel-core": "^6.26.3",
     "babel-jest": "^22.4.3",
     "babel-plugin-import": "^1.7.0",
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
     "jest": "^22.4.3",
-    "react-test-renderer": "^16.3.2"
+    "react-test-renderer": "^16.3.2",
+    "regenerator-runtime": "^0.11.1"
   },
   "jest": {
     "testPathIgnorePatterns": [
       "<rootDir>/node_modules/"
-    ]
+    ],
+    "moduleNameMapper": {
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js",
+      "\\.(css|less)$": "<rootDir>/__mocks__/styleMock.js"
+    }
   }
 }

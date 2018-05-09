@@ -18,7 +18,7 @@ class App extends React.Component {
     this.setState({
       collapsed: !this.state.collapsed
     })
-  };
+  }
 
   render () {
     return (
