@@ -2,6 +2,6 @@
   "presets": ["env", "react"],
   "plugins": [
     "syntax-dynamic-import",
-    ["import", { "libraryName": "antd", "libraryDirectory": "es", "style": true }]
+    ["import", { "libraryName": "antd", "style": true }]
    ]
 }
