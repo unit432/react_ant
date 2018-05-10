@@ -6,7 +6,6 @@ cache:
   - node_modules
 install:
   - npm install
-  - npm prune
 script:
   - npm test
 deploy:
