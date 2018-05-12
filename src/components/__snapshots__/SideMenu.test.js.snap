@@ -1,0 +1,81 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SideMenu SideMenu renders a Downloads and a Settings menu item 1`] = `
+<div
+  className="ant-layout-sider"
+  style={
+    Object {
+      "flex": "0 0 200px",
+      "maxWidth": "200px",
+      "minWidth": "200px",
+      "width": "200px",
+    }
+  }
+>
+  <div
+    className="ant-layout-sider-children"
+  >
+    <div
+      className="logo"
+    />
+    <ul
+      className="ant-menu ant-menu-dark ant-menu-root ant-menu-inline"
+      role="menu"
+      style={Object {}}
+    >
+      <li
+        aria-disabled={undefined}
+        className="ant-menu-item ant-menu-item-selected"
+        onBlur={undefined}
+        onClick={[Function]}
+        onContextMenu={undefined}
+        onFocus={undefined}
+        onMouseDown={undefined}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        onTouchStart={undefined}
+        role="menuitem"
+        style={
+          Object {
+            "paddingLeft": 24,
+          }
+        }
+        title={undefined}
+      >
+        <i
+          className="anticon anticon-sync"
+        />
+        <span>
+          Downloads
+        </span>
+      </li>
+      <li
+        aria-disabled={undefined}
+        className="ant-menu-item"
+        onBlur={undefined}
+        onClick={[Function]}
+        onContextMenu={undefined}
+        onFocus={undefined}
+        onMouseDown={undefined}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        onTouchStart={undefined}
+        role="menuitem"
+        style={
+          Object {
+            "paddingLeft": 24,
+          }
+        }
+        title={undefined}
+      >
+        <i
+          className="anticon anticon-setting"
+        />
+        <span>
+          Settings
+        </span>
+      </li>
+    </ul>
+  </div>
+</div>
+`;

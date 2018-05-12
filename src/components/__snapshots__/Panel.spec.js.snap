@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Panel Panel renders a list of downloads 1`] = `
+<div
+  className="ant-layout-content"
+  style={
+    Object {
+      "background": "#fff",
+      "margin": "24px 16px",
+      "minHeight": 280,
+      "padding": 24,
+    }
+  }
+>
+  List
+</div>
+`;

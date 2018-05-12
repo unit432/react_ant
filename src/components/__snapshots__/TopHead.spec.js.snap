@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HeadMenu HeadMenu renders a toggle icon 1`] = `
+<div
+  className="ant-layout-header"
+  style={
+    Object {
+      "background": "#fff",
+      "padding": 0,
+    }
+  }
+>
+  <i
+    className="anticon anticon-menu-unfold trigger"
+    onClick={undefined}
+  />
+</div>
+`;
