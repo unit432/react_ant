@@ -12,6 +12,8 @@ exports[`Panel Panel renders a list of downloads 1`] = `
     }
   }
 >
-  List
+  <h1>
+    Downloads
+  </h1>
 </div>
 `;

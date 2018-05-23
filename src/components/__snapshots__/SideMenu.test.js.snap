@@ -42,12 +42,17 @@ exports[`SideMenu SideMenu renders a Downloads and a Settings menu item 1`] = `
         }
         title={undefined}
       >
-        <i
-          className="anticon anticon-sync"
-        />
-        <span>
-          Downloads
-        </span>
+        <a
+          href="/"
+          onClick={[Function]}
+        >
+          <i
+            className="anticon anticon-sync"
+          />
+          <span>
+            Downloads
+          </span>
+        </a>
       </li>
       <li
         aria-disabled={undefined}
@@ -68,12 +73,17 @@ exports[`SideMenu SideMenu renders a Downloads and a Settings menu item 1`] = `
         }
         title={undefined}
       >
-        <i
-          className="anticon anticon-setting"
-        />
-        <span>
-          Settings
-        </span>
+        <a
+          href="/settings"
+          onClick={[Function]}
+        >
+          <i
+            className="anticon anticon-setting"
+          />
+          <span>
+            Settings
+          </span>
+        </a>
       </li>
     </ul>
   </div>
