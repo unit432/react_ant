@@ -12,12 +12,16 @@ class SideMenu extends React.Component {
         <div className='logo' />
         <Menu theme='dark' mode='inline' defaultSelectedKeys={['1']}>
           <Menu.Item key='1'>
-            <Icon type='sync' />
-            <span><Link to='/'>Downloads</Link></span>
+            <Link to='/'>
+              <Icon type='sync' />
+              <span>Downloads</span>
+            </Link>
           </Menu.Item>
           <Menu.Item key='2'>
-            <Icon type='setting' />
-            <span><Link to='/settings'>Settings</Link></span>
+            <Link to='/settings'>
+              <Icon type='setting' />
+              <span>Settings</span>
+            </Link>
           </Menu.Item>
         </Menu>
       </Sider>
