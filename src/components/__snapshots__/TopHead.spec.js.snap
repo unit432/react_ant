@@ -11,7 +11,7 @@ exports[`HeadMenu HeadMenu renders a toggle icon 1`] = `
   }
 >
   <i
-    className="anticon anticon-menu-unfold trigger"
+    className="anticon anticon-menu-fold trigger"
     onClick={undefined}
   />
 </div>
