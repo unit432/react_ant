@@ -1,13 +1,13 @@
 import React from 'react'
 import Panel from './Panel'
-import renderer from 'react-test-renderer'
 import { MemoryRouter } from 'react-router-dom'
+import { shallow, configure, mount } from 'enzyme'
+import Adapter from 'enzyme-adapter-react-16'
+configure({ adapter: new Adapter() })
 
 describe("Panel", () => {
-  it('Panel renders a list of downloads', () => {
-    const rendered_panel = renderer
-      .create(<MemoryRouter><Panel /></MemoryRouter>)
-      .toJSON();
-    expect(rendered_panel).toMatchSnapshot()
+  it('renders routes', () => {
+    const panel = mount(<MemoryRouter><Panel /></MemoryRouter>)
+    expect(panel.find('Route').length).toEqual(2)
   })
 })

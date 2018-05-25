@@ -6,10 +6,10 @@ const mapDispatchToProps = dispatch => ({
   toggleSideMenu: () => dispatch(toggleSideMenu)
 })
 
-const mapStateToProps = dispatch => ({
+const mapStateToProps = state => ({
   show_side_menu: state
 })
 
-const THead = connect(null, mapDispatchToProps)(TopHead)
+const THead = connect(mapStateToProps, mapDispatchToProps)(TopHead)
 
 export default THead

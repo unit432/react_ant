@@ -2,7 +2,6 @@ import React from 'react'
 import { Layout, Menu, Icon } from 'antd'
 import './SideMenu.css'
 import { Link } from 'react-router-dom'
-
 const { Sider } = Layout
 
 class SideMenu extends React.Component {

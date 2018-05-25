@@ -1,12 +1,13 @@
 import React from 'react'
-import THead from './TopHead'
-import renderer from 'react-test-renderer'
+import TopHead from './TopHead'
+import { mount, configure, shallow } from 'enzyme'
+import Adapter from 'enzyme-adapter-react-16'
+configure({ adapter: new Adapter() })
 
-describe("HeadMenu", () => {
-  it('HeadMenu renders a toggle icon', () => {
-    const rendered_head = renderer
-      .create(<THead />)
-      .toJSON();
-    expect(rendered_head).toMatchSnapshot()
+describe("THead", () => {
+  it('Renders an icon', () => {
+    const toggleSideMenu = jest.fn()
+    const head_menu = mount(<TopHead show_side_menu={true} toggleSideMenu={toggleSideMenu}/>)
+    expect(head_menu.find('Icon').length).toEqual(1)
   })
 })
