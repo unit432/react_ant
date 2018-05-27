@@ -11,10 +11,3 @@ script:
 notifications:
   slack:
     on_success: never
-deploy:
-  provider: pages
-  skip-cleanup: true
-  github-token: $GITHUB_TOKEN
-  keep-history: true
-  on:
-    branch: master
