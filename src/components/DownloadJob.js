@@ -1,13 +1,14 @@
 import React from 'react'
 import { Row, Progress, Col } from 'antd'
+import ControlButtons from './ControlButtons'
 
 class DownloadJob extends React.Component {
   render () {
     return (
       <div>
         <Row>
-          <Col>FileName</Col>
-          <Col>ControlMenu</Col>
+          <Col>{this.props.fileName}</Col>
+          <Col><ControlButtons /></Col>
         </Row>
         <Row>
           <Col>Status</Col>
