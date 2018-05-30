@@ -11,13 +11,13 @@ class DownloadJob extends React.Component {
           <Col><ControlButtons /></Col>
         </Row>
         <Row>
-          <Col>Status</Col>
-          <Col>Download Speed</Col>
-          <Col>Upload Speed</Col>
+          <Col>{this.props.status}</Col>
+          <Col>{this.props.downloadSpeed}</Col>
+          <Col>{this.props.uploadSpeed}</Col>
           <Col>Time Estimate</Col>
-          <Col>File Size</Col>
-          <Col>Downloaded Size</Col>
-          <Col>Uploaded Size</Col>
+          <Col>{this.props.totalLength}</Col>
+          <Col>{this.props.completedLength}</Col>
+          <Col>{this.props.uploadLength}</Col>
           <Col>D/U Ratio</Col>
           <Col>Percent</Col>
         </Row>

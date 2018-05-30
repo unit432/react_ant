@@ -7,7 +7,13 @@ configure({ adapter: new Adapter() })
 function setup() {
   const props = {
     gid: '2089b05ecca3d829',
-    fileName: 'debian.iso'
+    fileName: 'debian.iso',
+    status: 'active',
+    downloadSpeed: '120 KB/s',
+    uploadSpeed: '12 KB/s',
+    totalLength: '1G',
+    completedLength: '50M',
+    uploadLength: '12M'
   }
 
   const enzymeWrapper = mount(<DownloadJob {...props} />)
@@ -36,7 +42,17 @@ describe('Download', () => {
 
   it('renders a row has download status', () => {
     const second_row = enzymeWrapper.find('Row').at(1)
-    expect(second_row.find('Col').length).toEqual(9)
+    const cols = second_row.find('Col')
+    expect(cols.length).toEqual(9)
+    expect(cols.at(0).text()).toEqual('active')
+    expect(cols.at(1).text()).toEqual('120 KB/s')
+    expect(cols.at(2).text()).toEqual('12 KB/s')
+    expect(cols.at(3).text()).toEqual('Time Estimate')
+    expect(cols.at(4).text()).toEqual('1G')
+    expect(cols.at(5).text()).toEqual('50M')
+    expect(cols.at(6).text()).toEqual('12M')
+    expect(cols.at(7).text()).toEqual('D/U Ratio')
+    expect(cols.at(8).text()).toEqual('Percent')
   })
 
   it('renders a row has a progress bar', () => {
