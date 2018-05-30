@@ -33,16 +33,16 @@ describe('Download', () => {
   })
 
   it('renders a row has columns', () => {
-    const first_row = enzymeWrapper.find('Row').at(0)
-    const cols = first_row.find('Col')
+    const firstRow = enzymeWrapper.find('Row').at(0)
+    const cols = firstRow.find('Col')
     expect(cols.length).toEqual(2)
     expect(cols.at(0).text()).toEqual('debian.iso')
     expect(cols.at(1).find('ControlButtons').length).toEqual(1)
   })
 
   it('renders a row has download status', () => {
-    const second_row = enzymeWrapper.find('Row').at(1)
-    const cols = second_row.find('Col')
+    const secondRow = enzymeWrapper.find('Row').at(1)
+    const cols = secondRow.find('Col')
     expect(cols.length).toEqual(9)
     expect(cols.at(0).text()).toEqual('active')
     expect(cols.at(1).text()).toEqual('120 KB/s')
@@ -56,7 +56,7 @@ describe('Download', () => {
   })
 
   it('renders a row has a progress bar', () => {
-    const third_row = enzymeWrapper.find('Row').at(2)
-    expect(third_row.find('Progress').length).toEqual(1)
+    const thirdRow = enzymeWrapper.find('Row').at(2)
+    expect(thirdRow.find('Progress').length).toEqual(1)
   })
 })
