@@ -1,10 +1,6 @@
-const sideMenu = (state = false, action) => {
-  switch (action.type) {
-    case 'TOGGLE_SIDE_MENU':
-      return !state
-    default:
-      return state
-  }
-}
+import { combineReducers } from 'redux'
+import sideMenu from './sideMenu'
 
-export default sideMenu
+export default combineReducers({
+  sideMenu
+})

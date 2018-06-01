@@ -7,7 +7,7 @@ class ControlButtons extends React.Component {
     return (
       <div>
         <ButtonGroup>
-          <Icon type={this.props.jobStatus != 'active' ? 'play-circle-o' : 'pause-circle-o'} />
+          <Icon type={this.props.jobStatus !== 'active' ? 'play-circle-o' : 'pause-circle-o'} />
           <Icon type='delete' />
           <Icon type='setting' />
         </ButtonGroup>

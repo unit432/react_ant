@@ -1,4 +1,4 @@
-import sideMenu from './index'
+import sideMenu from './sideMenu'
 
 describe('reducers', () => {
   it('should handle initial state', () => {

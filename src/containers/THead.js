@@ -7,7 +7,7 @@ const mapDispatchToProps = dispatch => ({
 })
 
 const mapStateToProps = state => ({
-  show_side_menu: state
+  show_side_menu: state.sideMenu
 })
 
 const THead = connect(mapStateToProps, mapDispatchToProps)(TopHead)
