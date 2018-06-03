@@ -7,10 +7,10 @@ describe('actions', () => {
     })
   })
 
-  it('loadActiveJobs should create LOAD_ACTIVE_JOBS action', () => {
+  it('loadJobs should create LOAD_JOBS action', () => {
     const array = [{uid: 'bdef'}, {uid: 'geg3f'}]
-    expect(actions.loadActiveJobs(array)).toEqual({
-      type: 'LOAD_ACTIVE_JOBS',
+    expect(actions.loadJobs(array)).toEqual({
+      type: 'LOAD_JOBS',
       array
     })
   })
