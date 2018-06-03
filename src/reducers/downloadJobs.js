@@ -6,7 +6,7 @@ const downloadJobs = (state = [], action) => {
         ...action.array
       ]
     default:
-      return []
+      return state
   }
 }
 
