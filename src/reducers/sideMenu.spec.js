@@ -1,6 +1,6 @@
 import sideMenu from './sideMenu'
 
-describe('reducers', () => {
+describe('sideMenu reducers', () => {
   it('should handle initial state', () => {
     expect(
       sideMenu(true, {})
