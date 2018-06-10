@@ -8,7 +8,7 @@ import { throwError } from 'redux-saga-test-plan/providers'
 describe('saga test', () => {
   it('fetchJobs works', () => {
     const api = {
-      fetchData: id => ({ data: [{ uid: 'a' }, { uid: 'b' }] })
+      fetchData: () => ({ data: [{ uid: 'a' }, { uid: 'b' }] })
     }
 
     return expectSaga(fetchJobs, api)
@@ -18,7 +18,7 @@ describe('saga test', () => {
   })
 
   it('fetchJobs handles errors', () => {
-    const api = { fetchData: id => ({ }) }
+    const api = { fetchData: () => ({ }) }
     const error = new Error('error')
 
     return expectSaga(fetchJobs, api)
