@@ -14,4 +14,12 @@ describe('actions', () => {
       array
     })
   })
+
+  it('fetch_jobs_request should create FETCH_JOBS_REQUEST action', () => {
+    const job_type = 'tellActive'
+    expect(actions.fetch_jobs(job_type)).toEqual({
+      type: 'FETCH_JOBS_REQUEST',
+      job_type
+    })
+  })
 })
