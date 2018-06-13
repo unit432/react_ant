@@ -1,5 +1,4 @@
-import { delay } from 'redux-saga'
-import { put, call, all, takeLatest, take } from 'redux-saga/effects'
+import { put, call, all, takeLatest } from 'redux-saga/effects'
 import fetchData from '../api/aria2c'
 
 export function* fetchJobs(api) {
@@ -15,6 +14,6 @@ export function* fetchJobs(api) {
 
 export default function* rootSaga() {
   yield all([
-    takeLatest('FETCH_JOBS_REQUEST', fetchJobs)
+    takeLatest('FETCH_JOBS_REQUEST', fetchJobs(fetchData))
   ])
 }
