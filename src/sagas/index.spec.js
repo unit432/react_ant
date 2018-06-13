@@ -12,6 +12,7 @@ describe('saga test', () => {
     }
 
     return expectSaga(fetchJobs, api)
+      .put({ type: 'FETCH_JOBS_REQUEST' })
       .put({ type: 'LOAD_JOBS', payload: [{uid: 'a'}, {uid: 'b'}] })
       .put({ type: 'FETCH_JOBS_SUCCESS' })
       .run()
@@ -25,6 +26,7 @@ describe('saga test', () => {
       .provide([
         [matchers.call.fn(api.fetchData), throwError(error)]
       ])
+      .put({ type: 'FETCH_JOBS_REQUEST' })
       .put({ type: 'FETCH_JOBS_FAILURE', error })
       .run()
   })
