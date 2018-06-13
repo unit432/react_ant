@@ -7,11 +7,9 @@ import { throwError } from 'redux-saga-test-plan/providers'
 
 describe('saga test', () => {
   it('fetchJobs works', () => {
-    const api = {
-      fetchData: () => ({ data: [{ uid: 'a' }, { uid: 'b' }] })
-    }
+    const fetchData = () => ({ data: [{ uid: 'a' }, { uid: 'b' }] })
 
-    return expectSaga(fetchJobs, api)
+    return expectSaga(fetchJobs, fetchData)
       .put({ type: 'FETCH_JOBS_REQUEST' })
       .put({ type: 'LOAD_JOBS', payload: [{uid: 'a'}, {uid: 'b'}] })
       .put({ type: 'FETCH_JOBS_SUCCESS' })
@@ -19,12 +17,12 @@ describe('saga test', () => {
   })
 
   it('fetchJobs handles errors', () => {
-    const api = { fetchData: () => ({ }) }
+    const fetchData = () => ({ })
     const error = new Error('error')
 
-    return expectSaga(fetchJobs, api)
+    return expectSaga(fetchJobs, fetchData)
       .provide([
-        [matchers.call.fn(api.fetchData), throwError(error)]
+        [matchers.call.fn(fetchData), throwError(error)]
       ])
       .put({ type: 'FETCH_JOBS_REQUEST' })
       .put({ type: 'FETCH_JOBS_FAILURE', error })
