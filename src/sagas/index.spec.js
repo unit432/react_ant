@@ -1,31 +1,51 @@
 import { put, call } from 'redux-saga/effects'
 import { delay } from 'redux-saga'
 import { fetchJobs } from './index'
-import { expectSaga } from 'redux-saga-test-plan'
+import { testSaga } from 'redux-saga-test-plan'
 import * as matchers from 'redux-saga-test-plan/matchers'
 import { throwError } from 'redux-saga-test-plan/providers'
 
 describe('saga test', () => {
   it('fetchJobs works', () => {
-    const fetchData = () => ({ data: [{ uid: 'a' }, { uid: 'b' }] })
+    const polling = () => ({})
+    const jobs = { data: [{ uid: 'a' }, { uid: 'b' }] }
 
-    return expectSaga(fetchJobs, fetchData)
+    testSaga(fetchJobs, polling)
+      .next()
+
       .put({ type: 'FETCH_JOBS_REQUEST' })
-      .put({ type: 'LOAD_JOBS', payload: [{uid: 'a'}, {uid: 'b'}] })
+      .next()
+
+      .call(polling)
+      .next(jobs)
+
+      .put({ type: 'LOAD_JOBS', payload: [{ uid: 'a' }, { uid: 'b' }] })
+      .next()
+
       .put({ type: 'FETCH_JOBS_SUCCESS' })
-      .run()
+      .next()
+
+      .call(delay, 2000)
+      .next()
+
+      .finish()
+      .isDone()
   })
 
   it('fetchJobs handles errors', () => {
-    const fetchData = () => ({ })
-    const error = new Error('error')
+    const polling = () => ({ })
+    const error = new Error('Newwork Error')
 
-    return expectSaga(fetchJobs, fetchData)
-      .provide([
-        [matchers.call.fn(fetchData), throwError(error)]
-      ])
+    testSaga(fetchJobs, polling)
+      .next()
+
       .put({ type: 'FETCH_JOBS_REQUEST' })
+      .next()
+
+      .throw(error)
       .put({ type: 'FETCH_JOBS_FAILURE', error })
-      .run()
+
+      .finish()
+      .isDone()
   })
 })
