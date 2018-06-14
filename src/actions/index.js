@@ -18,3 +18,8 @@ export const fetch_jobs = job_type => ({
   type: FETCH_JOBS_REQUEST,
   job_type
 })
+
+export const fetch_jobs_failure = error => ({
+  type: FETCH_JOBS_FAILURE,
+  error
+})

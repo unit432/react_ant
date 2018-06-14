@@ -22,4 +22,12 @@ describe('actions', () => {
       job_type
     })
   })
+
+  it('fetch_jobs_failure should create FETCH_JOBS_FAILURE action', () => {
+    const error = 'network error'
+    expect(actions.fetch_jobs_failure(error)).toEqual({
+      type: 'FETCH_JOBS_FAILURE',
+      error
+    })
+  })
 })
