@@ -1,4 +1,4 @@
-const sideMenu = (state = false, action) => {
+const frontend = (state = false, action) => {
   switch (action.type) {
     case 'TOGGLE_SIDE_MENU':
       return !state
@@ -7,4 +7,4 @@ const sideMenu = (state = false, action) => {
   }
 }
 
-export default sideMenu
+export default frontend

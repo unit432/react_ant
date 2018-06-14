@@ -1,15 +1,15 @@
-import sideMenu from './sideMenu'
+import frontend from './frontend'
 
-describe('sideMenu reducers', () => {
+describe('frontend reducers', () => {
   it('should handle initial state', () => {
     expect(
-      sideMenu(true, {})
+      frontend(true, {})
     ).toEqual(true)
   })
 
   it('should toggle hide_side_menu state', () => {
     expect(
-      sideMenu(false, { type: 'TOGGLE_SIDE_MENU' })
+      frontend(false, { type: 'TOGGLE_SIDE_MENU' })
     ).toEqual(true)
   })
 })

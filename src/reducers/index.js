@@ -1,6 +1,8 @@
 import { combineReducers } from 'redux'
-import sideMenu from './sideMenu'
+import frontend from './frontend'
+import downloadJobs from './downloadJobs'
 
 export default combineReducers({
-  sideMenu
+  frontend,
+  downloadJobs
 })
