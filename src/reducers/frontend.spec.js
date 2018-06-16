@@ -23,31 +23,42 @@ describe('frontend reducers', () => {
     ).toEqual(initialState)
   })
 
-  it('should toggle hide_side_menu state', () => {
-    expect(
-      frontend(initialState, { type: TOGGLE_SIDE_MENU }).hideSideMenu
-    ).toEqual(false)
+  describe('TOGGLE_SIDE_MENU action', () => {
+    it('should toggle hide_side_menu state', () => {
+      expect(
+        frontend(initialState, { type: TOGGLE_SIDE_MENU }).hideSideMenu
+      ).toEqual(false)
+    })
   })
 
-  it('should handle isFetching state', () => {
-    expect(
-      frontend(initialState, { type: FETCH_JOBS_REQUEST }).isFetching
-    ).toEqual(true)
+
+  describe('FETCH_JOBS_REQUEST action', () => {
+    it('should set isFetching state to true', () => {
+      expect(
+        frontend(initialState, { type: FETCH_JOBS_REQUEST }).isFetching
+      ).toEqual(true)
+    })
   })
 
-  it('should handle fetchFailed state', () => {
-    expect(
-      frontend(initialState, { type: FETCH_JOBS_FAILURE }).fetchFailed
-    ).toEqual(true)
+  describe('FETCH_JOBS_FAILURE action', () => {
+    it('should set fetchFailed to true', () => {
+      expect(
+        frontend(initialState, { type: FETCH_JOBS_FAILURE }).fetchFailed
+      ).toEqual(true)
+    })
   })
 
-  it('should handle FETCH_JOBS_SUCCESS action', () => {
-    expect(
-      frontend(initialState, { type: FETCH_JOBS_SUCCESS }).isFetching
-    ).toEqual(false)
+  describe('FETCH_JOBS_SUCCESS action', () => {
+    it('should set isFetching to false', () => {
+      expect(
+        frontend(initialState, { type: FETCH_JOBS_SUCCESS }).isFetching
+      ).toEqual(false)
+    })
 
-    expect(
-      frontend(initialState, { type: FETCH_JOBS_SUCCESS }).fetchFailed
-    ).toEqual(false)
+    it('should set fetchFailed to false', () => {
+      expect(
+        frontend(initialState, { type: FETCH_JOBS_SUCCESS }).fetchFailed
+      ).toEqual(false)
+    })
   })
 })
