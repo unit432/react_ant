@@ -18,6 +18,7 @@ export function* fetchJobs(api) {
       yield call(delay, 2000)
     } catch (error) {
       yield put({ type: FETCH_JOBS_FAILURE, error })
+      yield call(delay, 2000)
     }
   }
 }

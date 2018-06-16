@@ -50,6 +50,10 @@ describe('saga test', () => {
 
       .throw(error)
       .put({ type: FETCH_JOBS_FAILURE, error })
+      .next()
+
+      .call(delay, 2000)
+      .next()
 
       .finish()
       .isDone()
