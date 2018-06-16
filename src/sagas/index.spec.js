@@ -4,6 +4,12 @@ import { fetchJobs } from './index'
 import { testSaga } from 'redux-saga-test-plan'
 import * as matchers from 'redux-saga-test-plan/matchers'
 import { throwError } from 'redux-saga-test-plan/providers'
+import {
+  FETCH_JOBS_REQUEST,
+  LOAD_JOBS,
+  FETCH_JOBS_SUCCESS,
+  FETCH_JOBS_FAILURE
+} from '../actions/actionTypes'
 
 describe('saga test', () => {
   it('fetchJobs works', () => {
@@ -13,16 +19,16 @@ describe('saga test', () => {
     testSaga(fetchJobs, polling)
       .next()
 
-      .put({ type: 'FETCH_JOBS_REQUEST' })
+      .put({ type: FETCH_JOBS_REQUEST })
       .next()
 
       .call(polling)
       .next(jobs)
 
-      .put({ type: 'LOAD_JOBS', payload: [{ uid: 'a' }, { uid: 'b' }] })
+      .put({ type: LOAD_JOBS, payload: [{ uid: 'a' }, { uid: 'b' }] })
       .next()
 
-      .put({ type: 'FETCH_JOBS_SUCCESS' })
+      .put({ type: FETCH_JOBS_SUCCESS })
       .next()
 
       .call(delay, 2000)
@@ -39,11 +45,11 @@ describe('saga test', () => {
     testSaga(fetchJobs, polling)
       .next()
 
-      .put({ type: 'FETCH_JOBS_REQUEST' })
+      .put({ type: FETCH_JOBS_REQUEST })
       .next()
 
       .throw(error)
-      .put({ type: 'FETCH_JOBS_FAILURE', error })
+      .put({ type: FETCH_JOBS_FAILURE, error })
 
       .finish()
       .isDone()

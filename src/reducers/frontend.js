@@ -1,3 +1,9 @@
+import {
+  TOGGLE_SIDE_MENU,
+  FETCH_JOBS_REQUEST,
+  FETCH_JOBS_FAILURE
+} from '../actions/actionTypes'
+
 const frontend = (state =
   {
     hideSideMenu: false,
@@ -5,11 +11,11 @@ const frontend = (state =
     fetchFailed: false
   }, action) => {
   switch (action.type) {
-    case 'TOGGLE_SIDE_MENU':
+    case TOGGLE_SIDE_MENU:
       return Object.assign({}, state, { hideSideMenu: !state.hideSideMenu })
-    case 'FETCH_JOBS_REQUEST':
+    case FETCH_JOBS_REQUEST:
       return Object.assign({}, state, { isFetching: !state.isFetching })
-    case 'FETCH_JOBS_FAILURE':
+    case FETCH_JOBS_FAILURE:
       return Object.assign({}, state, { fetchFailed: !state.fetchFailed })
     default:
       return state

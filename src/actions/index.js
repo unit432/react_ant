@@ -1,9 +1,10 @@
-export const TOGGLE_SIDE_MENU = 'TOGGLE_SIDE_MENU'
-export const LOAD_JOBS = 'LOAD_JOBS'
-export const FETCH_JOBS_REQUEST = 'FETCH_JOBS_REQUEST'
-export const FETCH_JOBS_FAILURE = 'FETCH_JOBS_FAILURE'
-export const FETCH_JOBS_SUCCESS = 'FETCH_JOBS_SUCCESS'
-
+import {
+  TOGGLE_SIDE_MENU,
+  LOAD_JOBS,
+  FETCH_JOBS_REQUEST,
+  FETCH_JOBS_FAILURE,
+  FETCH_JOBS_SUCCESS
+} from './actionTypes'
 
 export const toggleSideMenu = ({
   type: TOGGLE_SIDE_MENU
@@ -22,4 +23,8 @@ export const fetch_jobs = job_type => ({
 export const fetch_jobs_failure = error => ({
   type: FETCH_JOBS_FAILURE,
   error
+})
+
+export const fetch_jobs_success = ({
+  type: FETCH_JOBS_SUCCESS
 })

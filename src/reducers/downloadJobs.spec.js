@@ -1,9 +1,10 @@
+import { LOAD_JOBS } from '../actions/actionTypes'
 import downloadJobs from './downloadJobs'
 
 describe('downloads reducers', () => {
 
   const fetchedJobs = {
-    type: 'LOAD_JOBS',
+    type: LOAD_JOBS,
     array: [{ uid: 'b' }, { uid: 'a' }]
   }
 

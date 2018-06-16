@@ -4,7 +4,7 @@ import {
   FETCH_JOBS_REQUEST,
   FETCH_JOBS_FAILURE,
   FETCH_JOBS_SUCCESS
-} from '../actions'
+} from '../actions/actionTypes'
 
 describe('frontend reducers', () => {
   let initialState
