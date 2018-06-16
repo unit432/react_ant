@@ -12,8 +12,8 @@ describe('frontend reducers', () => {
   beforeEach (() => {
     initialState = {
       hideSideMenu: true,
-      isFetching: false,
-      fetchFailed: false
+      isFetching: true,
+      fetchFailed: true
     }
   })
 
@@ -39,5 +39,15 @@ describe('frontend reducers', () => {
     expect(
       frontend(initialState, { type: FETCH_JOBS_FAILURE }).fetchFailed
     ).toEqual(true)
+  })
+
+  it('should handle FETCH_JOBS_SUCCESS action', () => {
+    expect(
+      frontend(initialState, { type: FETCH_JOBS_SUCCESS }).isFetching
+    ).toEqual(false)
+
+    expect(
+      frontend(initialState, { type: FETCH_JOBS_SUCCESS }).fetchFailed
+    ).toEqual(false)
   })
 })
