@@ -7,19 +7,20 @@ import {
 
 const frontend = (state =
   {
+    errorMessage: [],
     hideSideMenu: false,
     isFetching: false,
-    fetchFailed: false
+    fetchFailed: false,
   }, action) => {
   switch (action.type) {
     case TOGGLE_SIDE_MENU:
-      return Object.assign({}, state, { hideSideMenu: !state.hideSideMenu })
+      return { ...state, hideSideMenu: !state.hideSideMenu  }
     case FETCH_JOBS_REQUEST:
-      return Object.assign({}, state, { isFetching: true })
+      return { ...state, isFetching: true }
     case FETCH_JOBS_FAILURE:
-      return Object.assign({}, state, { fetchFailed: true })
+      return { ...state, fetchFailed: true, errorMessage: [...state.errorMessage, action.error] }
     case FETCH_JOBS_SUCCESS:
-      return Object.assign({}, state, { isFetching: false, fetchFailed: false })
+      return { ...state, isFetching: false, fetchFailed: false }
     default:
       return state
   }

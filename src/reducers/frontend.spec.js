@@ -11,6 +11,7 @@ describe('frontend reducers', () => {
 
   beforeEach (() => {
     initialState = {
+      errorMessage: [],
       hideSideMenu: true,
       isFetching: true,
       fetchFailed: true
@@ -41,10 +42,17 @@ describe('frontend reducers', () => {
   })
 
   describe('FETCH_JOBS_FAILURE action', () => {
+    const errorString = 'Newwork Error'
     it('should set fetchFailed to true', () => {
       expect(
-        frontend(initialState, { type: FETCH_JOBS_FAILURE }).fetchFailed
+        frontend(initialState, { type: FETCH_JOBS_FAILURE, error: errorString }).fetchFailed
       ).toEqual(true)
+    })
+
+    it('should update errorMessage in store', () => {
+      expect(
+        frontend(initialState, { type: FETCH_JOBS_FAILURE, error: errorString }).errorMessage
+      ).toEqual([errorString])
     })
   })
 
