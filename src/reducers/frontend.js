@@ -1,12 +1,12 @@
 const frontend = (state =
   {
-    showSideMenu: true,
+    hideSideMenu: false,
     isFetching: false,
     fetchFailed: false
   }, action) => {
   switch (action.type) {
     case 'TOGGLE_SIDE_MENU':
-      return Object.assign({}, state, { showSideMenu: !state.showSideMenu })
+      return Object.assign({}, state, { hideSideMenu: !state.hideSideMenu })
     case 'FETCH_JOBS_REQUEST':
       return Object.assign({}, state, { isFetching: !state.isFetching })
     case 'FETCH_JOBS_FAILURE':

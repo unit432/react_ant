@@ -6,7 +6,7 @@ configure({ adapter: new Adapter() })
 
 describe("THead", () => {
   const toggleSideMenu = jest.fn()
-  const wrapper = mount(<TopHead showSideMenu={true} toggleSideMenu={toggleSideMenu}/>)
+  const wrapper = mount(<TopHead hideSideMenu={true} toggleSideMenu={toggleSideMenu}/>)
 
   it('Renders an icon', () => {
     expect(

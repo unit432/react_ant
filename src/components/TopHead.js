@@ -8,7 +8,7 @@ class TopHead extends React.Component {
       <Header style={{ background: '#fff', padding: 0 }}>
         <Icon
           className='trigger'
-          type={this.props.showSideMenu ? 'menu-unfold' : 'menu-fold'}
+          type={this.props.show_side_menu ? 'menu-unfold' : 'menu-fold'}
           onClick={this.props.toggleSideMenu}
         />
       </Header>

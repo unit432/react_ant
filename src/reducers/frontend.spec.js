@@ -11,7 +11,7 @@ describe('frontend reducers', () => {
 
   beforeEach (() => {
     initialState = {
-      showSideMenu: true,
+      hideSideMenu: true,
       isFetching: false,
       fetchFailed: false
     }
@@ -25,7 +25,7 @@ describe('frontend reducers', () => {
 
   it('should toggle hide_side_menu state', () => {
     expect(
-      frontend(initialState, { type: TOGGLE_SIDE_MENU }).showSideMenu
+      frontend(initialState, { type: TOGGLE_SIDE_MENU }).hideSideMenu
     ).toEqual(false)
   })
 
