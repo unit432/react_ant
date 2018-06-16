@@ -3,5 +3,10 @@
   "plugins": [
     "syntax-dynamic-import",
     "transform-object-rest-spread"
-   ]
+  ],
+  "env": {
+    "production": {
+      "plugins": [["import", { "libraryName": "antd", "style": true }]]
+    }
+  }
 }
