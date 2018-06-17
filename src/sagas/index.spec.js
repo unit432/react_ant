@@ -1,6 +1,6 @@
 import { put, call } from 'redux-saga/effects'
 import { delay } from 'redux-saga'
-import { fetchJobs } from './index'
+import { fetchJobs, errorMessage } from './index'
 import { testSaga } from 'redux-saga-test-plan'
 import * as matchers from 'redux-saga-test-plan/matchers'
 import { throwError } from 'redux-saga-test-plan/providers'
@@ -31,7 +31,7 @@ describe('saga test', () => {
       .put({ type: FETCH_JOBS_SUCCESS })
       .next()
 
-      .call(delay, 2000)
+      .call(delay, 3000)
       .next()
 
       .finish()
@@ -40,7 +40,8 @@ describe('saga test', () => {
 
   it('fetchJobs handles errors', () => {
     const polling = () => ({ })
-    const error = new Error('Newwork Error')
+    // const errorMessage = (msg) => ({ msg })
+    const error = new Error('Network Error')
 
     testSaga(fetchJobs, polling)
       .next()
@@ -49,10 +50,13 @@ describe('saga test', () => {
       .next()
 
       .throw(error)
+      .call(errorMessage, error.message)
+      .next()
+
       .put({ type: FETCH_JOBS_FAILURE, error })
       .next()
 
-      .call(delay, 2000)
+      .call(delay, 3000)
       .next()
 
       .finish()
