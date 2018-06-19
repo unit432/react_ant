@@ -14,7 +14,7 @@ import {
 describe('saga test', () => {
   it('fetchJobs works', () => {
     const polling = () => ({})
-    const jobs = { data: [{ uid: 'a' }, { uid: 'b' }] }
+    const jobs = { data: { result: [{ uid: 'a' }, { uid: 'b' }] } }
 
     testSaga(fetchJobs, polling)
       .next()
@@ -25,7 +25,7 @@ describe('saga test', () => {
       .call(polling)
       .next(jobs)
 
-      .put({ type: LOAD_JOBS, payload: [{ uid: 'a' }, { uid: 'b' }] })
+      .put({ type: LOAD_JOBS, array: [{ uid: 'a' }, { uid: 'b' }] })
       .next()
 
       .put({ type: FETCH_JOBS_SUCCESS })
@@ -40,7 +40,6 @@ describe('saga test', () => {
 
   it('fetchJobs handles errors', () => {
     const polling = () => ({ })
-    // const errorMessage = (msg) => ({ msg })
     const error = new Error('Network Error')
 
     testSaga(fetchJobs, polling)

@@ -19,7 +19,7 @@ export function* fetchJobs(api) {
     try {
       yield put({ type: FETCH_JOBS_REQUEST })
       const jobs = yield call(api)
-      yield put({ type: LOAD_JOBS, payload: jobs.data })
+      yield put({ type: LOAD_JOBS, array: jobs.data.result })
       yield put({ type: FETCH_JOBS_SUCCESS })
       yield call(delay, 3000)
     } catch (error) {
