@@ -14,6 +14,10 @@ export function errorMessage(msg) {
   message.error(msg, 0)
 }
 
+export function destoryMessage() {
+  message.destroy()
+}
+
 export function* fetchJobs(api) {
   while(true) {
     try {
@@ -21,6 +25,7 @@ export function* fetchJobs(api) {
       const jobs = yield call(api)
       yield put({ type: LOAD_JOBS, array: jobs.data.result })
       yield put({ type: FETCH_JOBS_SUCCESS })
+      yield call(destoryMessage)
       yield call(delay, 3000)
     } catch (error) {
       yield call(errorMessage, error.message)

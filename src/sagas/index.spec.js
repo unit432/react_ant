@@ -1,6 +1,6 @@
 import { put, call } from 'redux-saga/effects'
 import { delay } from 'redux-saga'
-import { fetchJobs, errorMessage } from './index'
+import { fetchJobs, errorMessage, destoryMessage } from './index'
 import { testSaga } from 'redux-saga-test-plan'
 import * as matchers from 'redux-saga-test-plan/matchers'
 import { throwError } from 'redux-saga-test-plan/providers'
@@ -29,6 +29,9 @@ describe('saga test', () => {
       .next()
 
       .put({ type: FETCH_JOBS_SUCCESS })
+      .next()
+
+      .call(destoryMessage)
       .next()
 
       .call(delay, 3000)
