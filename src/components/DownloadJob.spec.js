@@ -9,11 +9,11 @@ function setup() {
     gid: '2089b05ecca3d829',
     fileName: 'debian.iso',
     status: 'active',
-    downloadSpeed: '120 KB/s',
-    uploadSpeed: '12 KB/s',
-    totalLength: '1G',
-    completedLength: '50M',
-    uploadLength: '12M'
+    downloadSpeed: 157457,
+    uploadSpeed: 2658,
+    totalLength: 7373821579,
+    completedLength: 2591637504,
+    uploadLength: 36929536
   }
 
   const enzymeWrapper = mount(<DownloadJob {...props} />)
@@ -40,19 +40,19 @@ describe('Download', () => {
     expect(cols.at(1).find('ControlButtons').length).toEqual(1)
   })
 
-  it('renders a row has download status', () => {
+  fit('renders a row has download status', () => {
     const secondRow = enzymeWrapper.find('Row').at(1)
     const cols = secondRow.find('Col')
     expect(cols.length).toEqual(9)
     expect(cols.at(0).text()).toEqual('active')
-    expect(cols.at(1).text()).toEqual('120 KB/s')
-    expect(cols.at(2).text()).toEqual('12 KB/s')
+    expect(cols.at(1).text()).toEqual('157457')
+    expect(cols.at(2).text()).toEqual('2658')
     expect(cols.at(3).text()).toEqual('Time Estimate')
-    expect(cols.at(4).text()).toEqual('1G')
-    expect(cols.at(5).text()).toEqual('50M')
-    expect(cols.at(6).text()).toEqual('12M')
-    expect(cols.at(7).text()).toEqual('D/U Ratio')
-    expect(cols.at(8).text()).toEqual('Percent')
+    expect(cols.at(4).text()).toEqual('7373821579')
+    expect(cols.at(5).text()).toEqual('2591637504')
+    expect(cols.at(6).text()).toEqual('36929536')
+    expect(cols.at(7).text()).toEqual('0.01')
+    expect(cols.at(8).text()).toBe('35.15%')
   })
 
   it('renders a row has a progress bar', () => {
