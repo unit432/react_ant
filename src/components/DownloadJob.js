@@ -4,24 +4,28 @@ import ControlButtons from './ControlButtons'
 
 class DownloadJob extends React.Component {
   render () {
+    const props = this.props
+    const percent = Number((props.completedLength * 100 / props.totalLength).toFixed(2))
+    const uploadRatio = Number((props.uploadLength/props.completedLength).toFixed(2))
+
     return (
       <div>
         <Row>
-          <Col>{this.props.fileName}</Col>
+          <Col>{props.fileName}</Col>
           <Col><ControlButtons /></Col>
         </Row>
         <Row>
-          <Col>{this.props.status}</Col>
-          <Col>{this.props.downloadSpeed}</Col>
-          <Col>{this.props.uploadSpeed}</Col>
+          <Col>{props.status}</Col>
+          <Col>{props.downloadSpeed}</Col>
+          <Col>{props.uploadSpeed}</Col>
           <Col>Time Estimate</Col>
-          <Col>{this.props.totalLength}</Col>
-          <Col>{this.props.completedLength}</Col>
-          <Col>{this.props.uploadLength}</Col>
-          <Col>D/U Ratio</Col>
-          <Col>Percent</Col>
+          <Col>{props.totalLength}</Col>
+          <Col>{props.completedLength}</Col>
+          <Col>{props.uploadLength}</Col>
+          <Col>{String(uploadRatio)}</Col>
+          <Col>{percent}%</Col>
         </Row>
-        <Row><Progress precent={30} /></Row>
+        <Row><Progress percent={percent} /></Row>
       </div>
     )
   }
