@@ -15,15 +15,15 @@ class DownloadJob extends React.Component {
           <Col><ControlButtons /></Col>
         </Row>
         <Row>
-          <Col>{props.status}</Col>
-          <Col>{props.downloadSpeed}</Col>
-          <Col>{props.uploadSpeed}</Col>
-          <Col>Time Estimate</Col>
-          <Col>{props.totalLength}</Col>
-          <Col>{props.completedLength}</Col>
-          <Col>{props.uploadLength}</Col>
-          <Col>{String(uploadRatio)}</Col>
-          <Col>{percent}%</Col>
+          <Col span={3} >{props.status}</Col>
+          <Col span={3} >{props.downloadSpeed}</Col>
+          <Col span={3} >{props.uploadSpeed}</Col>
+          <Col span={3} >Time Estimate</Col>
+          <Col span={3} >{props.totalLength}</Col>
+          <Col span={3} >{props.completedLength}</Col>
+          <Col span={2} >{props.uploadLength}</Col>
+          <Col span={2} >{String(uploadRatio)}</Col>
+          <Col span={2} >{percent}%</Col>
         </Row>
         <Row><Progress percent={percent} /></Row>
       </div>
