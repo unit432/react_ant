@@ -40,7 +40,7 @@ describe('Download', () => {
     expect(cols.at(1).find('ControlButtons').length).toEqual(1)
   })
 
-  it('renders a row has download status', () => {
+  fit('renders a row has download status', () => {
     const secondRow = enzymeWrapper.find('Row').at(1)
     const cols = secondRow.find('Col')
     expect(cols.length).toEqual(9)
