@@ -1,4 +1,5 @@
 import {
+  ADD_URIS,
   TOGGLE_SIDE_MENU,
   LOAD_JOBS,
   FETCH_JOBS_REQUEST,
@@ -27,4 +28,9 @@ export const fetch_jobs_failure = error => ({
 
 export const fetch_jobs_success = ({
   type: FETCH_JOBS_SUCCESS
+})
+
+export const add_uris = uris => ({
+  type: ADD_URIS,
+  uris: uris
 })

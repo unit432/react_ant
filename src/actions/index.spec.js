@@ -1,5 +1,6 @@
 import * as actions from './index'
 import {
+  ADD_URIS,
   TOGGLE_SIDE_MENU,
   LOAD_JOBS,
   FETCH_JOBS_REQUEST,
@@ -41,6 +42,14 @@ describe('actions', () => {
   it('fetch_jobs_success should create FETCH_JOBS_SUCCESS action', () => {
     expect(actions.fetch_jobs_success).toEqual({
       type: FETCH_JOBS_SUCCESS
+    })
+  })
+
+  it('add_uris should create ADD_URIS action', () => {
+    const uris = ['http://host/file2.zip', 'http://host/file2.zip']
+    expect(actions.add_uris(uris)).toEqual({
+      type: ADD_URIS,
+      uris: uris
     })
   })
 })
