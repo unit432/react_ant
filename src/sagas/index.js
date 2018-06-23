@@ -1,6 +1,6 @@
 import { delay } from 'redux-saga'
 import { put, call, all } from 'redux-saga/effects'
-import fetchData from '../api/aria2c'
+import { fetchData } from '../api/aria2c'
 import { message } from 'antd'
 import {
   FETCH_JOBS_REQUEST,

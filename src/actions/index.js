@@ -16,21 +16,21 @@ export const loadJobs = array => ({
   array
 })
 
-export const fetch_jobs = job_type => ({
+export const fetchJobsRequest = job_type => ({
   type: FETCH_JOBS_REQUEST,
   job_type
 })
 
-export const fetch_jobs_failure = error => ({
+export const fetchJobsFailure = error => ({
   type: FETCH_JOBS_FAILURE,
   error
 })
 
-export const fetch_jobs_success = ({
+export const fetchJobsSuccess = ({
   type: FETCH_JOBS_SUCCESS
 })
 
-export const add_uris = uris => ({
+export const addUris = uris => ({
   type: ADD_URIS,
   uris: uris
 })

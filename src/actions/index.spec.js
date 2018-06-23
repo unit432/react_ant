@@ -23,31 +23,31 @@ describe('actions', () => {
     })
   })
 
-  it('fetch_jobs_request should create FETCH_JOBS_REQUEST action', () => {
+  it('fetchJobsRequest should create FETCH_JOBS_REQUEST action', () => {
     const job_type = 'tellActive'
-    expect(actions.fetch_jobs(job_type)).toEqual({
+    expect(actions.fetchJobsRequest(job_type)).toEqual({
       type: FETCH_JOBS_REQUEST,
       job_type
     })
   })
 
-  it('fetch_jobs_failure should create FETCH_JOBS_FAILURE action', () => {
+  it('fetchJobsFailure should create FETCH_JOBS_FAILURE action', () => {
     const error = 'network error'
-    expect(actions.fetch_jobs_failure(error)).toEqual({
+    expect(actions.fetchJobsFailure(error)).toEqual({
       type: FETCH_JOBS_FAILURE,
       error
     })
   })
 
-  it('fetch_jobs_success should create FETCH_JOBS_SUCCESS action', () => {
-    expect(actions.fetch_jobs_success).toEqual({
+  it('fetchJobsSuccess should create FETCH_JOBS_SUCCESS action', () => {
+    expect(actions.fetchJobsSuccess).toEqual({
       type: FETCH_JOBS_SUCCESS
     })
   })
 
-  it('add_uris should create ADD_URIS action', () => {
+  it('addUris should create ADD_URIS action', () => {
     const uris = ['http://host/file2.zip', 'http://host/file2.zip']
-    expect(actions.add_uris(uris)).toEqual({
+    expect(actions.addUris(uris)).toEqual({
       type: ADD_URIS,
       uris: uris
     })
