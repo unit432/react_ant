@@ -1,33 +1,33 @@
 import { put, call } from 'redux-saga/effects'
 import { delay } from 'redux-saga'
-import { addUris, fetchJobs, errorMessage, destoryMessage } from './index'
+import { addUris, rpcCall, errorMessage, destoryMessage, paramsBuilder } from './index'
 import { testSaga } from 'redux-saga-test-plan'
-import * as matchers from 'redux-saga-test-plan/matchers'
 import { throwError } from 'redux-saga-test-plan/providers'
 import {
   FETCH_JOBS_REQUEST,
-  LOAD_JOBS,
+  LOAD_RPC_RETURN,
   FETCH_JOBS_SUCCESS,
   FETCH_JOBS_FAILURE
 } from '../actions/actionTypes'
-import { add_uris } from '../actions'
+import { fetchData } from '../api/aria2c'
 
 describe('saga test', () => {
-  describe('fetchJobs', () => {
+  describe('rpcCall', () => {
     it('works', () => {
-      const polling = () => ({})
-      const jobs = { data: { result: [{ uid: 'a' }, { uid: 'b' }] } }
+      const polling = () => ({ })
+      const result = [[{ uid: 'a' }, { uid: 'b' }], [], [], [], []]
+      const rpcReturns = { data: { result: result } }
 
-      testSaga(fetchJobs, polling)
+      testSaga(rpcCall, polling)
         .next()
 
         .put({ type: FETCH_JOBS_REQUEST })
         .next()
 
-        .call(polling)
-        .next(jobs)
+        .call(fetchData, 'multicall', paramsBuilder())
+        .next(rpcReturns)
 
-        .put({ type: LOAD_JOBS, array: [{ uid: 'a' }, { uid: 'b' }] })
+        .put({ type: LOAD_RPC_RETURN, data: rpcReturns.data })
         .next()
 
         .put({ type: FETCH_JOBS_SUCCESS })
@@ -36,7 +36,7 @@ describe('saga test', () => {
         .call(destoryMessage)
         .next()
 
-        .call(delay, 3000)
+        .call(delay, 2000)
         .next()
 
         .finish()
@@ -47,7 +47,7 @@ describe('saga test', () => {
       const polling = () => ({ })
       const error = new Error('Network Error')
 
-      testSaga(fetchJobs, polling)
+      testSaga(rpcCall, polling)
         .next()
 
         .put({ type: FETCH_JOBS_REQUEST })

@@ -2,7 +2,7 @@ import * as actions from './index'
 import {
   ADD_URIS,
   TOGGLE_SIDE_MENU,
-  LOAD_JOBS,
+  LOAD_RPC_RETURN,
   FETCH_JOBS_REQUEST,
   FETCH_JOBS_FAILURE,
   FETCH_JOBS_SUCCESS
@@ -12,14 +12,6 @@ describe('actions', () => {
   it('toggleSideMenu should create TOGGLE_SIDE_MENU action', () => {
     expect(actions.toggleSideMenu).toEqual({
       type: TOGGLE_SIDE_MENU
-    })
-  })
-
-  it('loadJobs should create LOAD_JOBS action', () => {
-    const array = [{uid: 'bdef'}, {uid: 'geg3f'}]
-    expect(actions.loadJobs(array)).toEqual({
-      type: LOAD_JOBS,
-      array
     })
   })
 
@@ -50,6 +42,14 @@ describe('actions', () => {
     expect(actions.addUris(uris)).toEqual({
       type: ADD_URIS,
       uris: uris
+    })
+  })
+
+  it('loadRpcReturn should create LOAD_RPC_RETURN aciton', () => {
+    const data = [[], [], [], [], []]
+    expect(actions.loadRpcReturn(data)).toEqual({
+      type: LOAD_RPC_RETURN,
+      data: data
     })
   })
 })

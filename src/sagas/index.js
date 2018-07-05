@@ -4,7 +4,7 @@ import { fetchData } from '../api/aria2c'
 import { message } from 'antd'
 import {
   FETCH_JOBS_REQUEST,
-  LOAD_JOBS,
+  LOAD_RPC_RETURN,
   FETCH_JOBS_SUCCESS,
   FETCH_JOBS_FAILURE
 } from '../actions/actionTypes'
@@ -18,15 +18,20 @@ export function destoryMessage() {
   message.destroy()
 }
 
-export function* fetchJobs(api) {
-  while(true) {
+export const paramsBuilder = () => {
+  return [[{"methodName":"aria2.tellActive"},{"methodName":"aria2.tellWaiting","params":[0,1000]},{"methodName":"aria2.tellStopped","params":[0,1000]},{"methodName":"aria2.getGlobalStat"},{"methodName":"aria2.getGlobalOption"}]]
+}
+
+export function* rpcCall() {
+  while (true) {
     try {
       yield put({ type: FETCH_JOBS_REQUEST })
-      const jobs = yield call(api)
-      yield put({ type: LOAD_JOBS, array: jobs.data.result })
+      const params = paramsBuilder()
+      const rpcReturn = yield call(fetchData, 'multicall', params)
+      yield put({ type: LOAD_RPC_RETURN, data: rpcReturn.data })
       yield put({ type: FETCH_JOBS_SUCCESS })
       yield call(destoryMessage)
-      yield call(delay, 3000)
+      yield call(delay, 2000)
     } catch (error) {
       yield call(errorMessage, error.message)
       yield put({ type: FETCH_JOBS_FAILURE, error })
@@ -36,7 +41,5 @@ export function* fetchJobs(api) {
 }
 
 export default function* rootSaga() {
-  yield all([
-    call(fetchJobs, fetchData)
-  ])
+  yield all([ call(rpcCall) ])
 }

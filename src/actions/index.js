@@ -1,7 +1,7 @@
 import {
   ADD_URIS,
   TOGGLE_SIDE_MENU,
-  LOAD_JOBS,
+  LOAD_RPC_RETURN,
   FETCH_JOBS_REQUEST,
   FETCH_JOBS_FAILURE,
   FETCH_JOBS_SUCCESS
@@ -9,11 +9,6 @@ import {
 
 export const toggleSideMenu = ({
   type: TOGGLE_SIDE_MENU
-})
-
-export const loadJobs = array => ({
-  type: LOAD_JOBS,
-  array
 })
 
 export const fetchJobsRequest = job_type => ({
@@ -33,4 +28,9 @@ export const fetchJobsSuccess = ({
 export const addUris = uris => ({
   type: ADD_URIS,
   uris: uris
+})
+
+export const loadRpcReturn = (data) => ({
+  type: LOAD_RPC_RETURN,
+  data: data
 })
