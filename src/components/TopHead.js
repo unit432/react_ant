@@ -11,6 +11,9 @@ class TopHead extends React.Component {
           type={this.props.show_side_menu ? 'menu-unfold' : 'menu-fold'}
           onClick={this.props.toggleSideMenu}
         />
+        <Icon className='trigger' type="file-add" />
+        <Icon className='trigger' type="pause-circle-o" />
+        <Icon className='trigger' type="delete" />
       </Header>
     )
   }

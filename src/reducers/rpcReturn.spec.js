@@ -46,7 +46,6 @@ describe ('loadRpcReturn', () => {
     }
   })
 
-  
   it('should handle initial data', () => {
     expect(
       loadRpcReturn(initialState, [])
@@ -68,9 +67,9 @@ describe ('loadRpcReturn', () => {
     })
   })
 
-  xit('should update downloadJobs', () => {
+  it('should update downloadJobs', () => {
     expect(
-      loadRpcReturn(initialState, testAction).downloadJobs
+      loadRpcReturn(initialState, testAction).jobs
     ).toEqual([{ uid: 'u3' }, { uid: 'u4' }])
   })
 })
