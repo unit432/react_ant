@@ -1,17 +1,31 @@
 import React from 'react'
 import { Row, Progress, Col } from 'antd'
 import ControlButtons from './ControlButtons'
+import { getFileName } from '../lib/utils'
 
 class DownloadJob extends React.Component {
+
   render () {
     const props = this.props
     const percent = Number((props.completedLength * 100 / props.totalLength).toFixed(2))
     const uploadRatio = Number((props.uploadLength/props.completedLength).toFixed(2))
 
+    var btName, fileName, dlName
+
+    if (props.bittorrent) {
+      btName = props.bittorrent.info && props.bittorrent.info.name
+    }
+
+    if (props.files) {
+      dlName = props.files[0] && getFileName(props.files[0].path)
+    }
+
+    fileName = btName || dlName || 'Unknown'
+
     return (
       <div>
         <Row>
-          <Col>{props.fileName}</Col>
+          <Col>{fileName}</Col>
           <Col><ControlButtons /></Col>
         </Row>
         <Row>
