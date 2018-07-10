@@ -60,7 +60,7 @@ describe('Downloads', () => {
     const wrapper = mount(<Downloads jobs={ [] } />)
 
     expect(
-      wrapper.find('Downloads').find('span').at(0).text()
-    ).toEqual('No Downloads')
+      wrapper.find('.ant-list-empty-text').at(0).text()
+    ).toEqual('No Download')
   })
 })
