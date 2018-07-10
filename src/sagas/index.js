@@ -1,7 +1,8 @@
 import { delay } from 'redux-saga'
-import { put, call, all } from 'redux-saga/effects'
+import { put, call, all, select } from 'redux-saga/effects'
 import { fetchData } from '../api/aria2c'
 import { message } from 'antd'
+import { getAria2Command } from './selectors'
 import {
   FETCH_JOBS_REQUEST,
   LOAD_RPC_RETURN,
@@ -18,15 +19,11 @@ export function destoryMessage() {
   message.destroy()
 }
 
-export const paramsBuilder = () => {
-  return [[{"methodName":"aria2.tellActive"},{"methodName":"aria2.tellWaiting","params":[0,1000]},{"methodName":"aria2.tellStopped","params":[0,1000]},{"methodName":"aria2.getGlobalStat"},{"methodName":"aria2.getGlobalOption"}]]
-}
-
 export function* rpcCall() {
   while (true) {
     try {
       yield put({ type: FETCH_JOBS_REQUEST })
-      const params = paramsBuilder()
+      const params = yield select(getAria2Command)
       const rpcReturn = yield call(fetchData, 'multicall', params)
       yield put({ type: LOAD_RPC_RETURN, data: rpcReturn.data })
       yield put({ type: FETCH_JOBS_SUCCESS })

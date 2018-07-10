@@ -1,6 +1,8 @@
 import * as actions from './index'
 import {
   ADD_URIS,
+  BUILD_ARIA2_CMD,
+  CLEAN_ARIA2_CMD,
   TOGGLE_SIDE_MENU,
   LOAD_RPC_RETURN,
   FETCH_JOBS_REQUEST,
@@ -50,6 +52,27 @@ describe('actions', () => {
     expect(actions.loadRpcReturn(data)).toEqual({
       type: LOAD_RPC_RETURN,
       data: data
+    })
+  })
+})
+
+describe('buildAria2Cmd', () => {
+  it('create BUILD_ARIA2_CMD action', () => {
+    expect(
+      actions.buildAria2Cmd('aria2.addUri')
+    ).toEqual({
+      type: BUILD_ARIA2_CMD,
+      cmd: 'aria2.addUri'
+    })
+  })
+})
+
+describe('cleanAria2Cmd', () => {
+  it('create CLEAN_ARIA2_CMD action', () => {
+    expect(
+      actions.cleanAria2Cmd
+    ).toEqual({
+      type: CLEAN_ARIA2_CMD
     })
   })
 })

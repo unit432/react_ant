@@ -1,6 +1,6 @@
-import { put, call } from 'redux-saga/effects'
+import { put, call, select } from 'redux-saga/effects'
 import { delay } from 'redux-saga'
-import { addUris, rpcCall, errorMessage, destoryMessage, paramsBuilder } from './index'
+import { addUris, rpcCall, errorMessage, destoryMessage } from './index'
 import { testSaga } from 'redux-saga-test-plan'
 import { throwError } from 'redux-saga-test-plan/providers'
 import {
@@ -10,6 +10,7 @@ import {
   FETCH_JOBS_FAILURE
 } from '../actions/actionTypes'
 import { fetchData } from '../api/aria2c'
+import { getAria2Command } from './selectors'
 
 describe('saga test', () => {
   describe('rpcCall', () => {
@@ -17,6 +18,8 @@ describe('saga test', () => {
       const polling = () => ({ })
       const result = [[{ uid: 'a' }, { uid: 'b' }], [], [], [], []]
       const rpcReturns = { data: { result: result } }
+      const selector = state => state.test
+      const commandSets = [[]]
 
       testSaga(rpcCall, polling)
         .next()
@@ -24,7 +27,10 @@ describe('saga test', () => {
         .put({ type: FETCH_JOBS_REQUEST })
         .next()
 
-        .call(fetchData, 'multicall', paramsBuilder())
+        .select(getAria2Command)
+        .next(commandSets)
+
+        .call(fetchData, 'multicall', commandSets)
         .next(rpcReturns)
 
         .put({ type: LOAD_RPC_RETURN, data: rpcReturns.data })

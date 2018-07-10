@@ -1,5 +1,7 @@
 import {
   ADD_URIS,
+  BUILD_ARIA2_CMD,
+  CLEAN_ARIA2_CMD,
   TOGGLE_SIDE_MENU,
   LOAD_RPC_RETURN,
   FETCH_JOBS_REQUEST,
@@ -33,4 +35,13 @@ export const addUris = uris => ({
 export const loadRpcReturn = (data) => ({
   type: LOAD_RPC_RETURN,
   data: data
+})
+
+export const buildAria2Cmd = (cmd) => ({
+  type: BUILD_ARIA2_CMD,
+  cmd: cmd
+})
+
+export const cleanAria2Cmd = ({
+  type: CLEAN_ARIA2_CMD
 })
