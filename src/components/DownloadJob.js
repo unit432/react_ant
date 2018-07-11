@@ -1,17 +1,23 @@
 import React from 'react'
-import { Row, Progress, Tag, List} from 'antd'
+import { Icon, Row, Progress, Tag, List} from 'antd'
 import { getFileName } from '../lib/utils'
 import ControlButtons from './ControlButtons'
 const ListItem = List.Item
 const { Meta } = List.Item
 
-class DownloadJob extends React.Component {
+const IconText = ({ type, text }) => (
+  <span>
+    <Icon type={type} style={{ marginRight: 8 }} />
+    {text}
+  </span>
+)
 
+class DownloadJob extends React.Component {
   render () {
     const props = this.props
     const percent = Number((props.completedLength * 100 / props.totalLength).toFixed(2))
     const uploadRatio = Number((props.uploadLength/props.completedLength).toFixed(2))
-
+    const estimatedTime = props.totalLength / props.downloadSpeed
     var btName, fileName, dlName
 
     if (props.bittorrent) {
@@ -30,19 +36,19 @@ class DownloadJob extends React.Component {
           title={fileName}
           description={
             <Row>
-              <Tag color="#87d068">{props.status}</Tag>
-              <Tag>{props.downloadSpeed}</Tag>
-              <Tag>{props.uploadSpeed}</Tag>
-              <Tag>Time Estimate</Tag>
-              <Tag>{props.totalLength}</Tag>
-              <Tag>{props.completedLength}</Tag>
-              <Tag>{props.uploadLength}</Tag>
-              <Tag>{String(uploadRatio)}</Tag>
-              <Tag>{percent}%</Tag>
+              <Tag color="#87d068"><IconText type="play-circle" text={props.status} /></Tag>
+              <Tag><IconText type="arrow-down" text={props.downloadSpeed} /></Tag>
+              <Tag><IconText type="arrow-up" text={props.uploadSpeed} /></Tag>
+              <Tag><IconText type="dashboard" text={estimatedTime} /></Tag>
+              <Tag><IconText type="cloud-download" text={props.totalLength} /></Tag>
+              <Tag><IconText type="download" text={props.completedLength} /></Tag>
+              <Tag><IconText type="upload" text={props.uploadLength} /></Tag>
+              <Tag><IconText type="swap" text={String(uploadRatio)} /></Tag>
+              <Tag><IconText type="right" text={percent + '%'} /></Tag>
             </Row>
           }
         />
-        <Progress percent={percent} />
+        <Progress size="small" percent={percent} />
       </ListItem>
     )
   }

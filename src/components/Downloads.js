@@ -8,6 +8,7 @@ class Downloads extends React.Component {
       <Card bordered={false}>
         <List
           size="large"
+          itemLayout="vertical"
           bordered={false}
           dataSource={this.props.jobs}
           locale={{emptyText: 'No Download'}}

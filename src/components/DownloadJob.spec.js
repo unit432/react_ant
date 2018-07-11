@@ -39,7 +39,6 @@ describe('DownloadJobs', () => {
     expect(tags.at(0).text()).toEqual('active')
     expect(tags.at(1).text()).toEqual('157457')
     expect(tags.at(2).text()).toEqual('2658')
-    expect(tags.at(3).text()).toEqual('Time Estimate')
     expect(tags.at(4).text()).toEqual('7373821579')
     expect(tags.at(5).text()).toEqual('2591637504')
     expect(tags.at(6).text()).toEqual('36929536')
@@ -47,7 +46,7 @@ describe('DownloadJobs', () => {
     expect(tags.at(8).text()).toBe('35.15%')
   })
 
-  it('renders a row has a progress bar', () => {
+  it('renders a row has a mini progress bar', () => {
     const listItem = enzymeWrapper.find('.ant-list-item').at(0)
     expect(listItem.find('Progress').length).toEqual(1)
   })
@@ -79,5 +78,22 @@ describe('DownloadJobs', () => {
       const fileName = listItem.find('.ant-list-item-meta-title')
       expect(fileName.text()).toEqual('CentOS-7-aarch64-Everything-1804.iso')
     })
+  })
+
+  describe('render tags properly', () => {
+    let props = {}
+    xit('active job using blue color tags', () => { })
+    xit('failed job using red color tags', () => { })
+    xit('completed job using green color tags', () => { })
+    xit('paused job only show status, file size, download size tags', ()=>{})
+    xit('failed job only show status, file size, download size tags', ()=>{})
+    xit('active job show all tags', ()=>{})
+    xit('render estimated time in day:hour:mintue format', () => {})
+    xit('render file size in GB/MB/KB format', () => {})
+  })
+
+  describe('render control button properly', () => {
+    xit('active job show puase button', () => {})
+    xit('paused job show start button', () => {})
   })
 })
