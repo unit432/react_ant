@@ -1,4 +1,4 @@
-import { getFileName } from './utils'
+import { formatSpeed, getFileName, formatBytes } from './utils'
 
 describe('getFileName', () => {
   it('returns file name from path', () => {
@@ -17,5 +17,17 @@ describe('getFileName', () => {
     ).toEqual(
       '4f9d9c3b38eef9893a445b6bcc0b4b3b8da14900'
     )
+  })
+})
+
+describe('formatBytes', () => {
+  it('format fileSize to proper format', () => {
+    expect(formatBytes(1024)).toEqual('1024 B')
+  })
+})
+
+describe('formatSpeed', () => {
+  it('format file transfer speed to proper format', () => {
+    expect(formatSpeed(1024)).toEqual('1024 B/s')
   })
 })

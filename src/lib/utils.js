@@ -6,3 +6,24 @@ export const getFileName = (path) => {
     return seed[seed.length - 1]
   }
 }
+
+export const formatBytes = (len) => {
+  len = +len
+  if (len <= 1024) {
+    return len.toFixed(0)  + " B"
+  }
+  len /= 1024
+  if (len <= 1024) {
+    return len.toFixed(1) + " KB"
+  }
+  len /= 1024
+  if (len <= 1024) {
+    return len.toFixed(2) + " MB"
+  }
+  len /= 1024
+  return len.toFixed(3) + " GB"
+}
+
+export const formatSpeed = (speed) => {
+  return formatBytes(speed) + "/s"
+}

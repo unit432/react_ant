@@ -1,6 +1,7 @@
 import React from 'react'
 import DownloadJob from './DownloadJob'
 import { shallow, configure, mount } from 'enzyme'
+import { formatSpeed, formatBytes } from '../lib/utils'
 import Adapter from 'enzyme-adapter-react-16'
 configure({ adapter: new Adapter() })
 
@@ -37,11 +38,11 @@ describe('DownloadJobs', () => {
     const tags = secondRow.find('Tag')
     expect(tags.length).toEqual(9)
     expect(tags.at(0).text()).toEqual('active')
-    expect(tags.at(1).text()).toEqual('157457')
-    expect(tags.at(2).text()).toEqual('2658')
-    expect(tags.at(4).text()).toEqual('7373821579')
-    expect(tags.at(5).text()).toEqual('2591637504')
-    expect(tags.at(6).text()).toEqual('36929536')
+    expect(tags.at(1).text()).toEqual(formatSpeed(157457))
+    expect(tags.at(2).text()).toEqual(formatSpeed(2658))
+    expect(tags.at(4).text()).toEqual(formatBytes(7373821579))
+    expect(tags.at(5).text()).toEqual(formatBytes(2591637504))
+    expect(tags.at(6).text()).toEqual(formatBytes(36929536))
     expect(tags.at(7).text()).toEqual('0.01')
     expect(tags.at(8).text()).toBe('35.15%')
   })
