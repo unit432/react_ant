@@ -17,7 +17,7 @@ class DownloadJob extends React.Component {
     const props = this.props
     const percent = Number((props.completedLength * 100 / props.totalLength).toFixed(2))
     const uploadRatio = Number((props.uploadLength/props.completedLength).toFixed(2))
-    const estimatedTime = props.totalLength / props.downloadSpeed
+    const estimatedTime = (props.totalLength - props.completedLength) / props.downloadSpeed
     var btName, fileName, dlName
 
     if (props.bittorrent) {
