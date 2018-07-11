@@ -27,3 +27,21 @@ export const formatBytes = (len) => {
 export const formatSpeed = (speed) => {
   return formatBytes(speed) + "/s"
 }
+
+const pad = (f) => {
+  return ("0" + f).substr(-2);
+}
+
+export const formatTime = (time) => {
+  time = parseInt(time, 10);
+  if (!time || !isFinite(time)) return "∞";
+  var secs = time % 60;
+  if (time < 60) return secs + "s";
+  var mins = Math.floor((time % 3600) / 60)
+  if (time < 3600) return pad(mins) + ":" + pad(secs);
+  var hrs = Math.floor((time % 86400) / 3600);
+  if (time < 86400) return pad(hrs) + ":" + pad(mins) + ":" + pad(secs);
+  var days = Math.floor(time / 86400);
+  console.log(hrs)
+  return days + "::" +  pad(hrs) + ":" + pad(mins) + ":" + pad(secs);
+}

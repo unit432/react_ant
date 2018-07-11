@@ -1,6 +1,6 @@
 import React from 'react'
 import { Icon, Row, Progress, Tag, List} from 'antd'
-import { formatSpeed, getFileName, formatBytes } from '../lib/utils'
+import { formatSpeed, getFileName, formatTime, formatBytes } from '../lib/utils'
 import ControlButtons from './ControlButtons'
 const ListItem = List.Item
 const { Meta } = List.Item
@@ -39,7 +39,7 @@ class DownloadJob extends React.Component {
               <Tag color="#87d068"><IconText type="play-circle" text={props.status} /></Tag>
               <Tag><IconText type="arrow-down" text={formatSpeed(props.downloadSpeed)} /></Tag>
               <Tag><IconText type="arrow-up" text={formatSpeed(props.uploadSpeed)} /></Tag>
-              <Tag><IconText type="dashboard" text={estimatedTime} /></Tag>
+              <Tag><IconText type="dashboard" text={formatTime(estimatedTime)} /></Tag>
               <Tag><IconText type="cloud-download" text={formatBytes(props.totalLength)} /></Tag>
               <Tag><IconText type="download" text={formatBytes(props.completedLength)} /></Tag>
               <Tag><IconText type="upload" text={formatBytes(props.uploadLength)} /></Tag>
