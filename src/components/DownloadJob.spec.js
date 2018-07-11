@@ -94,7 +94,7 @@ describe('DownloadJobs', () => {
   })
 
   describe('render control button properly', () => {
-    xit('active job show puase button', () => {})
+    xit('active job show pause button', () => {})
     xit('paused job show start button', () => {})
   })
 })
