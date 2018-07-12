@@ -1,7 +1,7 @@
 import React from 'react'
-import { Icon, Row, Progress, Tag, List} from 'antd'
+import { Button, Icon, Row, Progress, Tag, List} from 'antd'
 import { formatSpeed, getFileName, formatTime, formatBytes } from '../lib/utils'
-import ControlButtons from './ControlButtons'
+// import ControlButtons from './ControlButtons'
 const ListItem = List.Item
 const { Meta } = List.Item
 
@@ -11,6 +11,21 @@ const IconText = ({ type, text }) => (
     {text}
   </span>
 )
+
+const actionButton = (status) => {
+  var firstIcon
+  if (status === 'active'){
+    firstIcon = 'pause-circle'
+  } else{
+    firstIcon = 'play-circle'
+  }
+
+  return [
+    <Button size="small" icon={firstIcon} />,
+    <Button size="small" type="danger" icon="close-square" />,
+    <Button size="small" icon="setting" />
+  ]
+}
 
 class DownloadJob extends React.Component {
   render () {
@@ -73,7 +88,7 @@ class DownloadJob extends React.Component {
     }
 
     return (
-      <ListItem actions={ [<ControlButtons />] }>
+      <ListItem actions={ actionButton(jobStatus) }>
         <Meta
           title={fileName}
           description={ tagRow }

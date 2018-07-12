@@ -173,7 +173,18 @@ describe('DownloadJobs', () => {
   })
 
   describe('render control button properly', () => {
-    xit('active job show pause button', () => {})
-    xit('paused job show start button', () => {})
+    let props = {}
+
+    it('active job show pause button', () => {
+      const enzymeWrapper = mount(<DownloadJob {...{...props, status: 'active' } } />)
+      const lis = enzymeWrapper.find('.ant-list-item-action').find('li')
+      expect(lis.at(0).find('Icon').props().type).toEqual("pause-circle")
+    })
+
+    it('paused job show start button', () => {
+      const enzymeWrapper = mount(<DownloadJob {...{...props, status: 'paused' } } />)
+      const lis = enzymeWrapper.find('.ant-list-item-action').find('li')
+      expect(lis.at(0).find('Icon').props().type).toEqual("play-circle")
+    })
   })
 })
