@@ -91,7 +91,7 @@ describe('DownloadJobs', () => {
     })
 
     it('paused job using blue color tags', () => {
-      const enzymeWrapper = mount(<DownloadJob {...{...props, status: 'pause' } } />)
+      const enzymeWrapper = mount(<DownloadJob {...{...props, status: 'paused' } } />)
       const tags = enzymeWrapper.find('Tag')
       expect(tags.at(0).props().color).toEqual('blue')
     })
@@ -113,6 +113,34 @@ describe('DownloadJobs', () => {
     xit('active job show all tags', ()=>{})
     xit('render estimated time in day:hour:mintue format', () => {})
     xit('render file size in GB/MB/KB format', () => {})
+  })
+
+  describe('render tag icon properly', () => {
+    let props = {}
+
+    it('render pause-circle-o icon for paused job', () => {
+      const enzymeWrapper = mount(<DownloadJob {...{...props, status: 'paused' } } />)
+      const icons = enzymeWrapper.find('Tag').find('Icon')
+      expect(icons.at(0).props().type).toEqual('pause-circle')
+    })
+
+    it('render play-circle icon for active job', () => {
+      const enzymeWrapper = mount(<DownloadJob {...{...props, status: 'active' } } />)
+      const icons = enzymeWrapper.find('Tag').find('Icon')
+      expect(icons.at(0).props().type).toEqual('play-circle')
+    })
+
+    it('render check-circle icon for complete job', () => {
+      const enzymeWrapper = mount(<DownloadJob {...{...props, status: 'complete' } } />)
+      const icons = enzymeWrapper.find('Tag').find('Icon')
+      expect(icons.at(0).props().type).toEqual('check-circle')
+    })
+
+    it('render close-circle icon for error job', () => {
+      const enzymeWrapper = mount(<DownloadJob {...{...props, status: 'error' } } />)
+      const icons = enzymeWrapper.find('Tag').find('Icon')
+      expect(icons.at(0).props().type).toEqual('close-circle')
+    })
   })
 
   describe('render control button properly', () => {

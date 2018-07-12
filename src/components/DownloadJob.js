@@ -31,15 +31,24 @@ class DownloadJob extends React.Component {
 
     fileName = btName || dlName || 'Unknown'
 
-    var tagColor
-    if(jobStatus === 'active')
+    var tagColor, jobStatusIcon
+
+    if(jobStatus === 'active') {
       tagColor = 'blue'
-    else if (jobStatus === 'complete')
+      jobStatusIcon = 'play-circle'
+    } else if (jobStatus === 'complete') {
       tagColor = 'green'
-    else if (jobStatus === 'error')
+      jobStatusIcon = 'check-circle'
+    } else if (jobStatus === 'error') {
       tagColor = 'red'
-    else
+      jobStatusIcon = 'close-circle'
+    } else if (jobStatus === 'paused') {
       tagColor = 'blue'
+      jobStatusIcon = 'pause-circle'
+    }else {
+      tagColor = 'blue'
+      jobStatusIcon = 'paly-circle'
+    }
 
     return (
       <ListItem actions={ [<ControlButtons />] }>
@@ -47,7 +56,7 @@ class DownloadJob extends React.Component {
           title={fileName}
           description={
             <Row>
-              <Tag color={tagColor}><IconText type="play-circle" text={jobStatus} /></Tag>
+              <Tag color={tagColor}><IconText type={jobStatusIcon} text={jobStatus} /></Tag>
               <Tag color={tagColor}><IconText type="arrow-down" text={formatSpeed(props.downloadSpeed)} /></Tag>
               <Tag color={tagColor}><IconText type="arrow-up" text={formatSpeed(props.uploadSpeed)} /></Tag>
               <Tag color={tagColor}><IconText type="dashboard" text={formatTime(estimatedTime)} /></Tag>
