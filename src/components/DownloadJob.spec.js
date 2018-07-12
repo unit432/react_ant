@@ -30,6 +30,7 @@ function setup() {
 }
 
 describe('DownloadJobs', () => {
+  let props = {}
 
   const { enzymeWrapper } = setup()
 
@@ -40,9 +41,6 @@ describe('DownloadJobs', () => {
     expect(tags.at(0).text()).toEqual('active')
     expect(tags.at(1).text()).toEqual(formatSpeed(157457))
     expect(tags.at(2).text()).toEqual(formatSpeed(2658))
-    expect(tags.at(4).text()).toEqual(formatBytes(7373821579))
-    expect(tags.at(5).text()).toEqual(formatBytes(2591637504))
-    expect(tags.at(6).text()).toEqual(formatBytes(36929536))
     expect(tags.at(7).text()).toEqual('0.01')
     expect(tags.at(8).text()).toBe('35.15%')
   })
@@ -50,6 +48,25 @@ describe('DownloadJobs', () => {
   it('renders a row has a mini progress bar', () => {
     const listItem = enzymeWrapper.find('.ant-list-item').at(0)
     expect(listItem.find('Progress').length).toEqual(1)
+  })
+
+
+  it('paused job only show status, file size, download size tags', ()=>{
+    const enzymeWrapper = mount(<DownloadJob {...{...props, status: 'paused' } } />)
+    const tags = enzymeWrapper.find('Tag')
+    expect(tags.length).toEqual(4)
+  })
+
+  it('failed job only show status, file size, download size tags', ()=>{
+    const enzymeWrapper = mount(<DownloadJob {...{...props, status: 'error' } } />)
+    const tags = enzymeWrapper.find('Tag')
+    expect(tags.length).toEqual(4)
+  })
+
+  it('active job show all tags', ()=>{
+    const enzymeWrapper = mount(<DownloadJob {...{...props, status: 'active' } } />)
+    const tags = enzymeWrapper.find('Tag')
+    expect(tags.length).toEqual(9)
   })
 
   describe('renders names properly', () => {
@@ -107,12 +124,24 @@ describe('DownloadJobs', () => {
       const tags = enzymeWrapper.find('Tag')
       expect(tags.at(0).props().color).toEqual('green')
     })
+  })
 
-    xit('paused job only show status, file size, download size tags', ()=>{})
-    xit('failed job only show status, file size, download size tags', ()=>{})
-    xit('active job show all tags', ()=>{})
-    xit('render estimated time in day:hour:mintue format', () => {})
-    xit('render file size in GB/MB/KB format', () => {})
+  describe('render tag text properly', () => {
+    let props = {}
+
+    it('render estimated time in day:hour:mintue format', () => {
+      const enzymeWrapper = mount(<DownloadJob {...{...props, downloadSpeed: 157457, totalLength: 7373821579, completedLength: 2591637504, status: 'active'  } } />)
+      const tags = enzymeWrapper.find('Tag')
+      expect(tags.at(3).text()).toEqual('08:26:11')
+    })
+
+    it('render file size in GB/MB/KB format', () => {
+      const enzymeWrapper = mount(<DownloadJob {...{...props, status: 'active', totalLength: 7373821579, completedLength: 2591637504, uploadLength: 157457 } } />)
+      const tags = enzymeWrapper.find('Tag')
+      expect(tags.at(4).text()).toEqual('6.867 GB')
+      expect(tags.at(5).text()).toEqual('2.414 GB')
+      expect(tags.at(6).text()).toEqual('153.8 KB')
+    })
   })
 
   describe('render tag icon properly', () => {

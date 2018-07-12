@@ -50,23 +50,33 @@ class DownloadJob extends React.Component {
       jobStatusIcon = 'paly-circle'
     }
 
+    var tagRow
+    if(jobStatus === 'active'){
+      tagRow = <Row>
+        <Tag color={tagColor}><IconText type={jobStatusIcon} text={jobStatus} /></Tag>
+        <Tag color={tagColor}><IconText type="arrow-down" text={formatSpeed(props.downloadSpeed)} /></Tag>
+        <Tag color={tagColor}><IconText type="arrow-up" text={formatSpeed(props.uploadSpeed)} /></Tag>
+        <Tag color={tagColor}><IconText type="dashboard" text={formatTime(estimatedTime)} /></Tag>
+        <Tag color={tagColor}><IconText type="cloud-download" text={formatBytes(props.totalLength)} /></Tag>
+        <Tag color={tagColor}><IconText type="download" text={formatBytes(props.completedLength)} /></Tag>
+        <Tag color={tagColor}><IconText type="upload" text={formatBytes(props.uploadLength)} /></Tag>
+        <Tag color={tagColor}><IconText type="swap" text={String(uploadRatio)} /></Tag>
+        <Tag color={tagColor}><IconText type="right" text={percent + '%'} /></Tag>
+      </Row>
+    }else{
+      tagRow = <Row>
+        <Tag color={tagColor}><IconText type={jobStatusIcon} text={jobStatus} /></Tag>
+        <Tag color={tagColor}><IconText type="cloud-download" text={formatBytes(props.totalLength)} /></Tag>
+        <Tag color={tagColor}><IconText type="download" text={formatBytes(props.completedLength)} /></Tag>
+        <Tag color={tagColor}><IconText type="right" text={percent + '%'} /></Tag>
+      </Row>
+    }
+
     return (
       <ListItem actions={ [<ControlButtons />] }>
         <Meta
           title={fileName}
-          description={
-            <Row>
-              <Tag color={tagColor}><IconText type={jobStatusIcon} text={jobStatus} /></Tag>
-              <Tag color={tagColor}><IconText type="arrow-down" text={formatSpeed(props.downloadSpeed)} /></Tag>
-              <Tag color={tagColor}><IconText type="arrow-up" text={formatSpeed(props.uploadSpeed)} /></Tag>
-              <Tag color={tagColor}><IconText type="dashboard" text={formatTime(estimatedTime)} /></Tag>
-              <Tag color={tagColor}><IconText type="cloud-download" text={formatBytes(props.totalLength)} /></Tag>
-              <Tag color={tagColor}><IconText type="download" text={formatBytes(props.completedLength)} /></Tag>
-              <Tag color={tagColor}><IconText type="upload" text={formatBytes(props.uploadLength)} /></Tag>
-              <Tag color={tagColor}><IconText type="swap" text={String(uploadRatio)} /></Tag>
-              <Tag color={tagColor}><IconText type="right" text={percent + '%'} /></Tag>
-            </Row>
-          }
+          description={ tagRow }
         />
         <Progress size="small" percent={percent} />
       </ListItem>
