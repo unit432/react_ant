@@ -81,11 +81,33 @@ describe('DownloadJobs', () => {
     })
   })
 
-  describe('render tags properly', () => {
+  describe('render tags color properly', () => {
     let props = {}
-    xit('active job using blue color tags', () => { })
-    xit('failed job using red color tags', () => { })
-    xit('completed job using green color tags', () => { })
+
+    it('active job using blue color tags', () => {
+      const enzymeWrapper = mount(<DownloadJob {...{...props, status: 'active' } } />)
+      const tags = enzymeWrapper.find('Tag')
+      expect(tags.at(0).props().color).toEqual('blue')
+    })
+
+    it('paused job using blue color tags', () => {
+      const enzymeWrapper = mount(<DownloadJob {...{...props, status: 'pause' } } />)
+      const tags = enzymeWrapper.find('Tag')
+      expect(tags.at(0).props().color).toEqual('blue')
+    })
+
+    it('failed job using red color tags', () => {
+      const enzymeWrapper = mount(<DownloadJob {...{...props, status: 'error' } } />)
+      const tags = enzymeWrapper.find('Tag')
+      expect(tags.at(0).props().color).toEqual('red')
+    })
+
+    it('completed job using green color tags', () => {
+      const enzymeWrapper = mount(<DownloadJob {...{...props, status: 'complete' } } />)
+      const tags = enzymeWrapper.find('Tag')
+      expect(tags.at(0).props().color).toEqual('green')
+    })
+
     xit('paused job only show status, file size, download size tags', ()=>{})
     xit('failed job only show status, file size, download size tags', ()=>{})
     xit('active job show all tags', ()=>{})
