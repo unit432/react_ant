@@ -4,6 +4,7 @@ import { fetchData } from '../api/aria2c'
 import { message } from 'antd'
 import { getAria2Command } from './selectors'
 import {
+  CLEAN_ARIA2_CMD,
   FETCH_JOBS_REQUEST,
   LOAD_RPC_RETURN,
   FETCH_JOBS_SUCCESS,
@@ -26,6 +27,7 @@ export function* rpcCall() {
       const params = yield select(getAria2Command)
       const rpcReturn = yield call(fetchData, 'multicall', params)
       yield put({ type: LOAD_RPC_RETURN, data: rpcReturn.data })
+      yield put({ type: CLEAN_ARIA2_CMD })
       yield put({ type: FETCH_JOBS_SUCCESS })
       yield call(destoryMessage)
       yield call(delay, 2000)

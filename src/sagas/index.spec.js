@@ -4,6 +4,7 @@ import { addUris, rpcCall, errorMessage, destoryMessage } from './index'
 import { testSaga } from 'redux-saga-test-plan'
 import { throwError } from 'redux-saga-test-plan/providers'
 import {
+  CLEAN_ARIA2_CMD,
   FETCH_JOBS_REQUEST,
   LOAD_RPC_RETURN,
   FETCH_JOBS_SUCCESS,
@@ -34,6 +35,9 @@ describe('saga test', () => {
         .next(rpcReturns)
 
         .put({ type: LOAD_RPC_RETURN, data: rpcReturns.data })
+        .next()
+
+        .put({ type: CLEAN_ARIA2_CMD })
         .next()
 
         .put({ type: FETCH_JOBS_SUCCESS })
