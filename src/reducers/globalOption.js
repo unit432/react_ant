@@ -1,5 +1,6 @@
 const initialState = {
-  host: '127.0.0.1'
+  host: '127.0.0.1',
+  port: '6800'
 }
 
 const globalOption = (state = initialState, action) => {

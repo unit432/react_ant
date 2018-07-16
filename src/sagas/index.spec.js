@@ -11,7 +11,7 @@ import {
   FETCH_JOBS_FAILURE
 } from '../actions/actionTypes'
 import { fetchData } from '../api/aria2c'
-import { getAria2Command } from './selectors'
+import { getAria2Command, getHostAddr, getPort } from './selectors'
 
 describe('saga test', () => {
   describe('rpcCall', () => {
@@ -19,8 +19,9 @@ describe('saga test', () => {
       const polling = () => ({ })
       const result = [[{ uid: 'a' }, { uid: 'b' }], [], [], [], []]
       const rpcReturns = { data: { result: result } }
-      const selector = state => state.test
       const commandSets = [[]]
+      const host = '127.0.0.1'
+      const port = '6800'
 
       testSaga(rpcCall, polling)
         .next()
@@ -28,10 +29,16 @@ describe('saga test', () => {
         .put({ type: FETCH_JOBS_REQUEST })
         .next()
 
+        .select(getHostAddr)
+        .next(host)
+
+        .select(getPort)
+        .next(port)
+
         .select(getAria2Command)
         .next(commandSets)
 
-        .call(fetchData, 'multicall', commandSets)
+        .call(fetchData, host, port, 'multicall', commandSets)
         .next(rpcReturns)
 
         .put({ type: LOAD_RPC_RETURN, data: rpcReturns.data })

@@ -2,7 +2,7 @@ import { delay } from 'redux-saga'
 import { put, call, all, select } from 'redux-saga/effects'
 import { fetchData } from '../api/aria2c'
 import { message } from 'antd'
-import { getAria2Command } from './selectors'
+import { getAria2Command, getHostAddr, getPort } from './selectors'
 import {
   CLEAN_ARIA2_CMD,
   FETCH_JOBS_REQUEST,
@@ -24,8 +24,10 @@ export function* rpcCall() {
   while (true) {
     try {
       yield put({ type: FETCH_JOBS_REQUEST })
+      const host = yield select(getHostAddr)
+      const port = yield select(getPort)
       const params = yield select(getAria2Command)
-      const rpcReturn = yield call(fetchData, 'multicall', params)
+      const rpcReturn = yield call(fetchData, host, port, 'multicall', params)
       yield put({ type: LOAD_RPC_RETURN, data: rpcReturn.data })
       yield put({ type: CLEAN_ARIA2_CMD })
       yield put({ type: FETCH_JOBS_SUCCESS })
