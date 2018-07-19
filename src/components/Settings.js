@@ -1,26 +1,37 @@
 import React from 'react'
-import { Tabs, Form, Select, Input, Button } from 'antd'
+import { Tabs, Form, Input, Button } from 'antd'
 
 const FormItem = Form.Item
-const Option = Select.Option
-const TabPane = Tabs.TabPane;
-
-function callback(key) {
-  console.log(key);
-}
+const TabPane = Tabs.TabPane
 
 class Settings extends React.Component {
+
+  handleSubmit = (e) => {
+    e.preventDefault()
+    this.props.form.validateFields((err, values) => {
+      if (!err) {
+        // console.log('Received values of form: ', values)
+        this.props.updateGlobalOption(values)
+      }
+    })
+  }
+
   render () {
+    const { getFieldDecorator } = this.props.form
     return (
       <div>
-        <Tabs defaultActaiveKey="1" onChange={callback}>
-          <TabPane tab="Aria2 PRC"    key="1">
-            <Form layout="inline">
+        <Tabs defaultActaiveKey="1">
+          <TabPane tab="Aria2 PRC" key="1">
+            <Form layout="inline" onSubmit={this.handleSubmit}>
               <FormItem label="Host">
-                <Input addonBefore ="Http(s)://" defaultValue={this.props.aira2Options.host} />
+                { getFieldDecorator('host', {
+                  rules: [{ required: true, message: 'Host address is required!' }]
+                })(<Input addonBefore ="Http(s)://"/>) }
               </FormItem>
               <FormItem label="Port">
-                <Input defaultValue={this.props.aira2Options.port} />
+                { getFieldDecorator('port', {
+                  rules: [{ required: true, message: 'Port is required!' }]
+                })(<Input />) }
               </FormItem>
               <FormItem>
                 <Button type="primary" htmlType="submit">Update Configuration</Button>

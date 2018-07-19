@@ -42,6 +42,5 @@ export const formatTime = (time) => {
   var hrs = Math.floor((time % 86400) / 3600);
   if (time < 86400) return pad(hrs) + ":" + pad(mins) + ":" + pad(secs);
   var days = Math.floor(time / 86400);
-  console.log(hrs)
   return days + "::" +  pad(hrs) + ":" + pad(mins) + ":" + pad(secs);
 }

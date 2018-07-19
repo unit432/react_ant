@@ -6,7 +6,8 @@ import {
   LOAD_RPC_RETURN,
   FETCH_JOBS_REQUEST,
   FETCH_JOBS_FAILURE,
-  FETCH_JOBS_SUCCESS
+  FETCH_JOBS_SUCCESS,
+  UPDATE_GLOBAL_OPTION
 } from './actionTypes'
 
 export const toggleSideMenu = ({
@@ -44,4 +45,9 @@ export const buildAria2Cmd = (cmd) => ({
 
 export const cleanAria2Cmd = ({
   type: CLEAN_ARIA2_CMD
+})
+
+export const updateGlobalOption = (payload) => ({
+  type: UPDATE_GLOBAL_OPTION,
+  payload: payload
 })

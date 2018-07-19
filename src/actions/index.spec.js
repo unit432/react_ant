@@ -7,7 +7,8 @@ import {
   LOAD_RPC_RETURN,
   FETCH_JOBS_REQUEST,
   FETCH_JOBS_FAILURE,
-  FETCH_JOBS_SUCCESS
+  FETCH_JOBS_SUCCESS,
+  UPDATE_GLOBAL_OPTION
 } from './actionTypes'
 
 describe('actions', () => {
@@ -73,6 +74,18 @@ describe('cleanAria2Cmd', () => {
       actions.cleanAria2Cmd
     ).toEqual({
       type: CLEAN_ARIA2_CMD
+    })
+  })
+})
+
+describe('updateGlobalOption', () => {
+  it('create UPDATE_GLOBAL_OPTION action', () => {
+    const options = { host: '0.0.0.0', port: 80 }
+    expect(
+      actions.updateGlobalOption(options)
+    ).toEqual({
+      type: UPDATE_GLOBAL_OPTION,
+      payload: { host: '0.0.0.0', port: 80 }
     })
   })
 })
