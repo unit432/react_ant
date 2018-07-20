@@ -68,4 +68,12 @@ describe('aria2Command reducer', () => {
       aria2Command(currentState, cleanAira2Command)
     ).toEqual(newState)
   })
+
+  it('returns default state if action is unknow', () => {
+    expect(
+      aria2Command([], { type: 'UNKNOW_ACTION'})
+    ).toEqual(
+      []
+    )
+  })
 })

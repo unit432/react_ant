@@ -65,4 +65,12 @@ describe('downloads reducers', () => {
       { uid: 'd1', downloadSpeed: "1152" }
     ])
   })
+
+  it('returns default state if action is unkonw', () => {
+    expect(
+      downloadJobs([], { type: 'UNKNOW_ACTION' })
+    ).toEqual(
+      []
+    )
+  })
 })

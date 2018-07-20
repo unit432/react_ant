@@ -1,4 +1,4 @@
-import { formatSpeed, getFileName, formatBytes } from './utils'
+import { formatTime, formatSpeed, getFileName, formatBytes } from './utils'
 
 describe('getFileName', () => {
   it('returns file name from path', () => {
@@ -29,5 +29,14 @@ describe('formatBytes', () => {
 describe('formatSpeed', () => {
   it('format file transfer speed to proper format', () => {
     expect(formatSpeed(1024)).toEqual('1024 B/s')
+  })
+})
+
+describe('formatTime', () => {
+  it('format time to proper format', () => {
+    expect(formatTime(24)).toEqual('24s')
+    expect(formatTime(1024)).toEqual('17:04')
+    expect(formatTime(451024)).toEqual('5::05:17:04')
+    expect(formatTime('NA')).toEqual('∞')
   })
 })
