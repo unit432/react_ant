@@ -54,6 +54,13 @@ describe('frontend reducers', () => {
         frontend(initialState, { type: FETCH_JOBS_FAILURE, error: errorString }).errorMessage
       ).toEqual([errorString])
     })
+
+    it('should clear prevous error message', () => {
+      initialState.errorMessage.push('Server is down.')
+      expect(
+        frontend(initialState, { type: FETCH_JOBS_FAILURE, error: errorString }).errorMessage
+      ).toEqual([errorString])
+    })
   })
 
   describe('FETCH_JOBS_SUCCESS action', () => {

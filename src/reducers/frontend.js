@@ -18,7 +18,7 @@ const frontend = (state =
     case FETCH_JOBS_REQUEST:
       return { ...state, isFetching: true }
     case FETCH_JOBS_FAILURE:
-      return { ...state, fetchFailed: true, errorMessage: [...state.errorMessage, action.error] }
+      return { ...state, fetchFailed: true, errorMessage: [action.error] }
     case FETCH_JOBS_SUCCESS:
       return { ...state, isFetching: false, fetchFailed: false }
     default:
