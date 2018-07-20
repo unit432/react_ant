@@ -36,7 +36,7 @@ export function* rpcCall() {
     } catch (error) {
       yield call(errorMessage, error.message)
       yield put({ type: FETCH_JOBS_FAILURE, error })
-      yield call(delay, 7000)
+      yield call(delay, 2000)
     }
   }
 }
