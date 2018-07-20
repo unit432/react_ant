@@ -41,6 +41,8 @@ export function* rpcCall() {
   }
 }
 
-export default function* rootSaga() {
+export function* rootSaga() {
   yield all([ call(rpcCall) ])
 }
+
+export default rootSaga
