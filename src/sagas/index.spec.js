@@ -1,25 +1,25 @@
-import { put, call, select } from 'redux-saga/effects'
-import { delay } from 'redux-saga'
-import { rootSaga, rpcCall, errorMessage, destoryMessage } from './index'
-import { expectSaga, testSaga } from 'redux-saga-test-plan'
-import { throwError } from 'redux-saga-test-plan/providers'
+import { put, call, select } from "redux-saga/effects";
+import { delay } from "redux-saga";
+import { rootSaga, rpcCall, errorMessage, destoryMessage } from "./index";
+import { expectSaga, testSaga } from "redux-saga-test-plan";
+import { throwError } from "redux-saga-test-plan/providers";
 import {
   CLEAN_ARIA2_CMD,
   FETCH_JOBS_REQUEST,
   LOAD_RPC_RETURN,
   FETCH_JOBS_SUCCESS,
   FETCH_JOBS_FAILURE
-} from '../actions/actionTypes'
-import { fetchData } from '../api/aria2c'
-import { getAria2Command, getHostAddr, getPort } from './selectors'
+} from "../actions/actionTypes";
+import { fetchData } from "../api/aria2c";
+import { getAria2Command, getHostAddr, getPort } from "./selectors";
 
-describe('rpcCall', () => {
-  it('works', () => {
-    const result = [[{ uid: 'a' }, { uid: 'b' }], [], [], [], []]
-    const rpcReturns = { data: { result: result } }
-    const commandSets = [[]]
-    const host = '127.0.0.1'
-    const port = '6800'
+describe("rpcCall", () => {
+  it("works", () => {
+    const result = [[{ uid: "a" }, { uid: "b" }], [], [], [], []];
+    const rpcReturns = { data: { result: result } };
+    const commandSets = [[]];
+    const host = "127.0.0.1";
+    const port = "6800";
 
     testSaga(rpcCall)
       .next()
@@ -36,7 +36,7 @@ describe('rpcCall', () => {
       .select(getAria2Command)
       .next(commandSets)
 
-      .call(fetchData, host, port, 'multicall', commandSets)
+      .call(fetchData, host, port, "multicall", commandSets)
       .next(rpcReturns)
 
       .put({ type: LOAD_RPC_RETURN, data: rpcReturns.data })
@@ -55,11 +55,11 @@ describe('rpcCall', () => {
       .next()
 
       .finish()
-      .isDone()
-  })
+      .isDone();
+  });
 
-  it('handles errors', () => {
-    const error = new Error('Network Error')
+  it("handles errors", () => {
+    const error = new Error("Network Error");
 
     testSaga(rpcCall)
       .next()
@@ -78,14 +78,14 @@ describe('rpcCall', () => {
       .next()
 
       .finish()
-      .isDone()
-  })
-})
+      .isDone();
+  });
+});
 
-describe('rootSaga', () => {
-  it('works', () => {
+describe("rootSaga", () => {
+  it("works", () => {
     expectSaga(rootSaga)
       .call(rpcCall)
-      .run()
-  })
-})
+      .run();
+  });
+});

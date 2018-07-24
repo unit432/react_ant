@@ -1,5 +1,5 @@
-import { LOAD_RPC_RETURN } from '../actions/actionTypes'
-import downloadJobs from './downloadJobs'
+import { LOAD_RPC_RETURN } from "../actions/actionTypes";
+import downloadJobs from "./downloadJobs";
 
 const initialState = {
   jobs: [],
@@ -11,17 +11,20 @@ const initialState = {
     numWaiting: 0,
     uploadSpeed: 0
   },
-  globalOption: {
-  }
-}
+  globalOption: {}
+};
 
 const loadRpcReturn = (state = initialState, action) => {
   switch (action.type) {
     case LOAD_RPC_RETURN:
-      return { ...state, globalStats: action.data.result[3][0], jobs: downloadJobs(state.downloadJobs, action) }
+      return {
+        ...state,
+        globalStats: action.data.result[3][0],
+        jobs: downloadJobs(state.downloadJobs, action)
+      };
     default:
-      return state 
+      return state;
   }
-}
+};
 
-export default loadRpcReturn
+export default loadRpcReturn;

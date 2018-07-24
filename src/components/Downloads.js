@@ -1,9 +1,9 @@
-import React from 'react'
-import { Card, List} from 'antd'
-import DownloadJob from './DownloadJob'
+import React from "react";
+import { Card, List } from "antd";
+import DownloadJob from "./DownloadJob";
 
 class Downloads extends React.Component {
-  render () {
+  render() {
     return (
       <Card bordered={false}>
         <List
@@ -11,15 +11,19 @@ class Downloads extends React.Component {
           itemLayout="vertical"
           bordered={false}
           dataSource={this.props.jobs}
-          locale={{emptyText: 'No Download'}}
+          locale={{ emptyText: "No Download" }}
           renderItem={item => (
-            <DownloadJob {...item} pause={this.props.pause} remove={this.props.remove} start={this.props.start} />
+            <DownloadJob
+              {...item}
+              pause={this.props.pause}
+              remove={this.props.remove}
+              start={this.props.start}
+            />
           )}
-        >
-        </List>
+        />
       </Card>
-    )
+    );
   }
 }
 
-export default Downloads
+export default Downloads;

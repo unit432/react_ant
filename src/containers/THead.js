@@ -1,15 +1,18 @@
-import { connect } from 'react-redux'
-import { toggleSideMenu } from '../actions'
-import TopHead from '../components/TopHead'
+import { connect } from "react-redux";
+import { toggleSideMenu } from "../actions";
+import TopHead from "../components/TopHead";
 
 const mapDispatchToProps = dispatch => ({
   toggleSideMenu: () => dispatch(toggleSideMenu)
-})
+});
 
 const mapStateToProps = state => ({
   show_side_menu: state.frontend.hideSideMenu
-})
+});
 
-const THead = connect(mapStateToProps, mapDispatchToProps)(TopHead)
+const THead = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(TopHead);
 
-export default THead
+export default THead;

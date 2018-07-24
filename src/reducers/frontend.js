@@ -3,27 +3,29 @@ import {
   FETCH_JOBS_REQUEST,
   FETCH_JOBS_FAILURE,
   FETCH_JOBS_SUCCESS
-} from '../actions/actionTypes'
+} from "../actions/actionTypes";
 
-const frontend = (state =
-  {
+const frontend = (
+  state = {
     errorMessage: [],
     hideSideMenu: false,
     isFetching: false,
-    fetchFailed: false,
-  }, action) => {
+    fetchFailed: false
+  },
+  action
+) => {
   switch (action.type) {
     case TOGGLE_SIDE_MENU:
-      return { ...state, hideSideMenu: !state.hideSideMenu  }
+      return { ...state, hideSideMenu: !state.hideSideMenu };
     case FETCH_JOBS_REQUEST:
-      return { ...state, isFetching: true }
+      return { ...state, isFetching: true };
     case FETCH_JOBS_FAILURE:
-      return { ...state, fetchFailed: true, errorMessage: [action.error] }
+      return { ...state, fetchFailed: true, errorMessage: [action.error] };
     case FETCH_JOBS_SUCCESS:
-      return { ...state, isFetching: false, fetchFailed: false }
+      return { ...state, isFetching: false, fetchFailed: false };
     default:
-      return state
+      return state;
   }
-}
+};
 
-export default frontend
+export default frontend;
