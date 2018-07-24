@@ -12,7 +12,9 @@ class Downloads extends React.Component {
           bordered={false}
           dataSource={this.props.jobs}
           locale={{emptyText: 'No Download'}}
-          renderItem={item => (<DownloadJob {...item} />)}
+          renderItem={item => (
+            <DownloadJob {...item} pause={this.props.pause} remove={this.props.remove} start={this.props.start} />
+          )}
         >
         </List>
       </Card>

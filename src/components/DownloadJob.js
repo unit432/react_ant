@@ -1,33 +1,33 @@
 import React from 'react'
 import { Button, Icon, Row, Progress, Tag, List} from 'antd'
 import { formatSpeed, getFileName, formatTime, formatBytes } from '../lib/utils'
-// import ControlButtons from './ControlButtons'
 const ListItem = List.Item
 const { Meta } = List.Item
 
 const IconText = ({ type, text }) => (
   <span>
-    <Icon type={type} style={{ marginRight: 8 }} />
+    <Icon type={type} style={ { marginRight: 8 } } />
     {text}
   </span>
 )
 
-const actionButton = (status) => {
-  var firstIcon
-  if (status === 'active'){
-    firstIcon = 'pause-circle'
-  } else{
-    firstIcon = 'play-circle'
+class DownloadJob extends React.Component {
+  actionButton = (status, gid) => {
+    if (status === 'active') {
+      return [
+        <Button size="small" icon='pause-circle' onClick={ () => { this.props.pause(gid) } } />,
+        <Button size="small" type="danger" icon="close-square" onClick={ () => { this.props.remove(gid) } }/>,
+        <Button size="small" icon="setting" />
+      ]
+    } else {
+      return [
+        <Button size="small" icon='play-circle' onClick={ () => { this.props.start(gid) } } />,
+        <Button size="small" type="danger" icon="close-square" onClick={ () => { this.props.remove(gid) } } />,
+        <Button size="small" icon="setting" />
+      ]
+    }
   }
 
-  return [
-    <Button size="small" icon={firstIcon} />,
-    <Button size="small" type="danger" icon="close-square" />,
-    <Button size="small" icon="setting" />
-  ]
-}
-
-class DownloadJob extends React.Component {
   render () {
     const props = this.props
     const percent = Number((props.completedLength * 100 / props.totalLength).toFixed(2))
@@ -48,7 +48,7 @@ class DownloadJob extends React.Component {
 
     var tagColor, jobStatusIcon
 
-    if(jobStatus === 'active') {
+    if (jobStatus === 'active') {
       tagColor = 'blue'
       jobStatusIcon = 'play-circle'
     } else if (jobStatus === 'complete') {
@@ -60,13 +60,13 @@ class DownloadJob extends React.Component {
     } else if (jobStatus === 'paused') {
       tagColor = 'blue'
       jobStatusIcon = 'pause-circle'
-    }else {
+    } else {
       tagColor = 'blue'
       jobStatusIcon = 'paly-circle'
     }
 
     var tagRow
-    if(jobStatus === 'active'){
+    if (jobStatus === 'active') {
       tagRow = <Row>
         <Tag color={tagColor}><IconText type={jobStatusIcon} text={jobStatus} /></Tag>
         <Tag color={tagColor}><IconText type="arrow-down" text={formatSpeed(props.downloadSpeed)} /></Tag>
@@ -78,7 +78,7 @@ class DownloadJob extends React.Component {
         <Tag color={tagColor}><IconText type="swap" text={String(uploadRatio)} /></Tag>
         <Tag color={tagColor}><IconText type="right" text={percent + '%'} /></Tag>
       </Row>
-    }else{
+    } else {
       tagRow = <Row>
         <Tag color={tagColor}><IconText type={jobStatusIcon} text={jobStatus} /></Tag>
         <Tag color={tagColor}><IconText type="cloud-download" text={formatBytes(props.totalLength)} /></Tag>
@@ -88,11 +88,8 @@ class DownloadJob extends React.Component {
     }
 
     return (
-      <ListItem actions={ actionButton(jobStatus) }>
-        <Meta
-          title={fileName}
-          description={ tagRow }
-        />
+      <ListItem actions={ this.actionButton(jobStatus, this.props.gid) }>
+        <Meta title={fileName} description={ tagRow } />
         <Progress size="small" percent={percent} />
       </ListItem>
     )
