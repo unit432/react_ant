@@ -1,4 +1,5 @@
 export const ADD_URIS = "ADD_URIS";
+export const TOGGLE_JOB_FORM = "TOGGLE_JOB_FORM";
 export const BUILD_ARIA2_CMD = "BUILD_ARIA2_CMD";
 export const CLEAN_ARIA2_CMD = "CLEAN_ARIA2_CMD";
 export const FETCH_JOBS_FAILURE = "FETCH_JOBS_FAILURE";

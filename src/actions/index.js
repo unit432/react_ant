@@ -2,6 +2,7 @@ import {
   ADD_URIS,
   BUILD_ARIA2_CMD,
   CLEAN_ARIA2_CMD,
+  TOGGLE_JOB_FORM,
   TOGGLE_SIDE_MENU,
   LOAD_RPC_RETURN,
   FETCH_JOBS_REQUEST,
@@ -12,6 +13,10 @@ import {
 
 export const toggleSideMenu = {
   type: TOGGLE_SIDE_MENU
+};
+
+export const toggleAddJobForm = {
+  type: TOGGLE_JOB_FORM
 };
 
 export const fetchJobsRequest = job_type => ({

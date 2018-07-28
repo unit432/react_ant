@@ -3,6 +3,7 @@ import {
   ADD_URIS,
   BUILD_ARIA2_CMD,
   CLEAN_ARIA2_CMD,
+  TOGGLE_JOB_FORM,
   TOGGLE_SIDE_MENU,
   LOAD_RPC_RETURN,
   FETCH_JOBS_REQUEST,
@@ -80,6 +81,14 @@ describe("updateGlobalOption", () => {
     expect(actions.updateGlobalOption(options)).toEqual({
       type: UPDATE_GLOBAL_OPTION,
       payload: { host: "0.0.0.0", port: 80 }
+    });
+  });
+});
+
+describe("toggleAddJobForm", () => {
+  it("create TOGGLE_JOB_FORM action", () => {
+    expect(actions.toggleAddJobForm).toEqual({
+      type: TOGGLE_JOB_FORM
     });
   });
 });

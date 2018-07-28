@@ -1,4 +1,5 @@
 import {
+  TOGGLE_JOB_FORM,
   TOGGLE_SIDE_MENU,
   FETCH_JOBS_REQUEST,
   FETCH_JOBS_FAILURE,
@@ -10,6 +11,7 @@ const frontend = (
     errorMessage: [],
     hideSideMenu: false,
     isFetching: false,
+    showAddJobForm: false,
     fetchFailed: false
   },
   action
@@ -23,6 +25,8 @@ const frontend = (
       return { ...state, fetchFailed: true, errorMessage: [action.error] };
     case FETCH_JOBS_SUCCESS:
       return { ...state, isFetching: false, fetchFailed: false };
+    case TOGGLE_JOB_FORM:
+      return { ...state, showAddJobForm: !state.showAddJobForm };
     default:
       return state;
   }

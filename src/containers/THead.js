@@ -1,13 +1,15 @@
 import { connect } from "react-redux";
-import { toggleSideMenu } from "../actions";
+import { toggleSideMenu, toggleAddJobForm } from "../actions";
 import TopHead from "../components/TopHead";
 
 const mapDispatchToProps = dispatch => ({
-  toggleSideMenu: () => dispatch(toggleSideMenu)
+  toggleSideMenu: () => dispatch(toggleSideMenu),
+  toggleAddJobForm: () => dispatch(toggleAddJobForm)
 });
 
 const mapStateToProps = state => ({
-  show_side_menu: state.frontend.hideSideMenu
+  showSideMenu: state.frontend.hideSideMenu,
+  showAddJobForm: state.frontend.showAddJobForm
 });
 
 const THead = connect(

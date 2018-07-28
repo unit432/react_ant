@@ -1,5 +1,6 @@
 import frontend from "./frontend";
 import {
+  TOGGLE_JOB_FORM,
   TOGGLE_SIDE_MENU,
   FETCH_JOBS_REQUEST,
   FETCH_JOBS_FAILURE,
@@ -14,6 +15,7 @@ describe("frontend reducers", () => {
       errorMessage: [],
       hideSideMenu: true,
       isFetching: true,
+      showAddJobForm: false,
       fetchFailed: true
     };
   });
@@ -73,6 +75,21 @@ describe("frontend reducers", () => {
     it("should set fetchFailed to false", () => {
       expect(
         frontend(initialState, { type: FETCH_JOBS_SUCCESS }).fetchFailed
+      ).toEqual(false);
+    });
+  });
+
+  describe("TOGGLE_JOB_FORM action", () => {
+    it("should toggle showAddJobForm to true", () => {
+      expect(
+        frontend(initialState, { type: TOGGLE_JOB_FORM }).showAddJobForm
+      ).toEqual(true);
+    });
+
+    it("should toggle showAddJobForm to false", () => {
+      const currentState = { ...initialState, showAddJobForm: true };
+      expect(
+        frontend(currentState, { type: TOGGLE_JOB_FORM }).showAddJobForm
       ).toEqual(false);
     });
   });
