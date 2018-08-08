@@ -1,6 +1,6 @@
 import React from "react";
 import JobForm from "./JobForm";
-import { Layout, Icon, Menu, Modal, Button } from "antd";
+import { Layout, Icon, Menu, Modal } from "antd";
 
 const { Header } = Layout;
 const MenuItem = Menu.Item;
