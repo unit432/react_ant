@@ -4,16 +4,27 @@ import { Form, Input, Button } from "antd";
 const { TextArea } = Input;
 const FormItem = Form.Item;
 
-class UriForm extends React.Component {
+class UriJobForm extends React.Component {
+  handleSubmit = e => {
+    e.preventDefault();
+    this.props.form.validateFields((err, values) => {
+      if (!err) {
+        this.props.addUris(values.uris);
+      }
+    });
+  };
+
   render() {
+    const { getFieldDecorator } = this.props.form;
+
     return (
-      <Form>
+      <Form onSubmit={this.handleSubmit}>
         <FormItem>
-          <TextArea rows={11} />
+          {getFieldDecorator("uris", {})(<TextArea rows={11} />)}
         </FormItem>
         <FormItem>
           <Button type="primary" htmlType="submit">
-            Register
+            Add
           </Button>
         </FormItem>
       </Form>
@@ -21,4 +32,5 @@ class UriForm extends React.Component {
   }
 }
 
+const UriForm = Form.create()(UriJobForm);
 export default UriForm;

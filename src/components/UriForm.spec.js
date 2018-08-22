@@ -1,11 +1,11 @@
 import React from "react";
 import UriForm from "./UriForm";
-import { configure, shallow } from "enzyme";
+import { configure, mount } from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
 configure({ adapter: new Adapter() });
 
 describe("UriForm", () => {
-  const wrapper = shallow(<UriForm />);
+  const wrapper = mount(<UriForm />);
   it("renders a text area", () => {
     expect(
       wrapper

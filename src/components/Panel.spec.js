@@ -17,6 +17,6 @@ describe("Panel", () => {
         </MemoryRouter>
       </Provider>
     );
-    expect(wrapper.find("Route").length).toEqual(2);
+    expect(wrapper.find("Route").length).toEqual(3);
   });
 });

@@ -2,6 +2,7 @@ import React from "react";
 import { Layout } from "antd";
 import DownloadsContainer from "../containers/Downloads";
 import SettingPanel from "../containers/SettingPanel";
+import JobFormPanel from "../containers/JobFormPanel";
 import { Route } from "react-router-dom";
 const { Content } = Layout;
 
@@ -18,6 +19,7 @@ class Panel extends React.Component {
       >
         <Route exact path="/" component={DownloadsContainer} />
         <Route path="/settings" component={SettingPanel} />
+        <Route path="/job-form" component={JobFormPanel} />
       </Content>
     );
   }

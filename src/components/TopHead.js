@@ -1,6 +1,6 @@
 import React from "react";
-import JobForm from "./JobForm";
-import { Layout, Icon, Menu, Modal } from "antd";
+import { Layout, Icon, Menu } from "antd";
+import { Link } from "react-router-dom";
 
 const { Header } = Layout;
 const MenuItem = Menu.Item;
@@ -17,7 +17,9 @@ class TopHead extends React.Component {
             />
           </MenuItem>
           <MenuItem>
-            <Icon type="file-add" />
+            <Link to="/job-form">
+              <Icon type="file-add" />
+            </Link>
           </MenuItem>
           <MenuItem>
             <Icon type="pause-circle-o" />
@@ -26,14 +28,6 @@ class TopHead extends React.Component {
             <Icon type="delete" />
           </MenuItem>
         </Menu>
-        <Modal
-          title="Add URIs"
-          visible={this.props.showAddJobForm}
-          onOk={this.test}
-          onCancel={this.toggleAddJobForm}
-        >
-          <JobForm />
-        </Modal>
       </Header>
     );
   }
