@@ -17,6 +17,7 @@ class Downloads extends React.Component {
               {...item}
               pause={this.props.pause}
               remove={this.props.remove}
+              removeDownloadResult={this.props.removeDownloadResult}
               start={this.props.start}
             />
           )}

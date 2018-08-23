@@ -16,8 +16,10 @@ const mapDispatchToProps = dispatch => ({
       buildAria2Cmd({ methodName: "aria2.unpause", params: [gid], once: true })
     ),
   remove: gid =>
+    dispatch(buildAria2Cmd({ methodName: "aria2.remove", params: [gid] })),
+  removeDownloadResult: gid =>
     dispatch(
-      buildAria2Cmd({ methodName: "aria2.remove", params: [gid], once: true })
+      buildAria2Cmd({ methodName: "aria2.removeDownloadResult", params: [gid] })
     )
 });
 

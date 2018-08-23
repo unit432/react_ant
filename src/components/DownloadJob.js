@@ -51,7 +51,7 @@ class DownloadJob extends React.Component {
           type="danger"
           icon="close-square"
           onClick={() => {
-            this.props.remove(gid);
+            this.props.removeDownloadResult(gid);
           }}
         />,
         <Button size="small" icon="setting" />

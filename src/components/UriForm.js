@@ -8,8 +8,11 @@ class UriJobForm extends React.Component {
   handleSubmit = e => {
     e.preventDefault();
     this.props.form.validateFields((err, values) => {
-      if (!err) {
-        this.props.addUris(values.uris);
+      if (!err && values.uris) {
+        var uris = values.uris.split("\n");
+        for (var element of uris) {
+          this.props.addUris([element]);
+        }
       }
     });
   };
