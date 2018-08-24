@@ -205,7 +205,7 @@ describe("DownloadJobs", () => {
         <DownloadJob {...{ ...props, status: "active" }} />
       );
       const icons = enzymeWrapper.find("Tag").find("Icon");
-      expect(icons.at(0).props().type).toEqual("play-circle");
+      expect(icons.at(0).props().type).toEqual("loading");
     });
 
     it("render check-circle icon for complete job", () => {

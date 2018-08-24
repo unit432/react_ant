@@ -94,7 +94,7 @@ class DownloadJob extends React.Component {
 
     if (jobStatus === "active") {
       tagColor = "blue";
-      jobStatusIcon = "play-circle";
+      jobStatusIcon = "loading";
     } else if (jobStatus === "complete") {
       tagColor = "green";
       jobStatusIcon = "check-circle";
