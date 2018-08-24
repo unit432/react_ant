@@ -228,7 +228,7 @@ describe("DownloadJobs", () => {
   describe("render control button properly", () => {
     let props = {};
 
-    it("active job show pause button", () => {
+    it("active job shows pause button", () => {
       const enzymeWrapper = mount(
         <DownloadJob {...{ ...props, status: "active" }} />
       );
@@ -241,7 +241,7 @@ describe("DownloadJobs", () => {
       ).toEqual("pause-circle");
     });
 
-    it("paused job show start button", () => {
+    it("paused job shows start button", () => {
       const enzymeWrapper = mount(
         <DownloadJob {...{ ...props, status: "paused" }} />
       );

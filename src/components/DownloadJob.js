@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Icon, Row, Progress, Tag, List } from "antd";
+import { Tooltip, Button, Icon, Row, Progress, Tag, List } from "antd";
 import {
   formatSpeed,
   getFileName,
@@ -20,40 +20,48 @@ class DownloadJob extends React.Component {
   actionButton = (status, gid) => {
     if (status === "active") {
       return [
-        <Button
-          size="small"
-          icon="pause-circle"
-          onClick={() => {
-            this.props.pause(gid);
-          }}
-        />,
-        <Button
-          size="small"
-          type="danger"
-          icon="close-square"
-          onClick={() => {
-            this.props.remove(gid);
-          }}
-        />,
+        <Tooltip placement="topLeft" title="Start Job">
+          <Button
+            size="small"
+            icon="pause-circle"
+            onClick={() => {
+              this.props.pause(gid);
+            }}
+          />
+        </Tooltip>,
+        <Tooltip placement="topLeft" title="Stop Job">
+          <Button
+            size="small"
+            type="danger"
+            icon="close-square"
+            onClick={() => {
+              this.props.remove(gid);
+            }}
+          />
+        </Tooltip>,
         <Button size="small" icon="setting" />
       ];
     } else {
       return [
-        <Button
-          size="small"
-          icon="play-circle"
-          onClick={() => {
-            this.props.start(gid);
-          }}
-        />,
-        <Button
-          size="small"
-          type="danger"
-          icon="close-square"
-          onClick={() => {
-            this.props.removeDownloadResult(gid);
-          }}
-        />,
+        <Tooltip placement="topLeft" title="Start Job">
+          <Button
+            size="small"
+            icon="play-circle"
+            onClick={() => {
+              this.props.start(gid);
+            }}
+          />
+        </Tooltip>,
+        <Tooltip placement="topLeft" title="Delete Job">
+          <Button
+            size="small"
+            type="danger"
+            icon="delete"
+            onClick={() => {
+              this.props.removeDownloadResult(gid);
+            }}
+          />
+        </Tooltip>,
         <Button size="small" icon="setting" />
       ];
     }
