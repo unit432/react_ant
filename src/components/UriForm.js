@@ -1,5 +1,6 @@
 import React from "react";
 import { Form, Input, Button } from "antd";
+import { Link } from "react-router-dom";
 
 const { TextArea } = Input;
 const FormItem = Form.Item;
@@ -29,6 +30,9 @@ class UriJobForm extends React.Component {
           <Button type="primary" htmlType="submit">
             Add
           </Button>
+          <Link to="/">
+            <Button style={{ marginLeft: 8 }}>Cancel</Button>
+          </Link>
         </FormItem>
       </Form>
     );
