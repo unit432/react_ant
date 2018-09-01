@@ -13,7 +13,7 @@ describe("TopHead", () => {
   it("render toggle side menu item", () => {
     expect(
       wrapper
-        .find("MenuItem")
+        .find("span")
         .at(0)
         .find("Icon")
         .props().type
@@ -23,7 +23,7 @@ describe("TopHead", () => {
   it("render add download job menu item", () => {
     expect(
       wrapper
-        .find("MenuItem")
+        .find("span")
         .at(1)
         .find("Icon")
         .props().type
@@ -33,7 +33,7 @@ describe("TopHead", () => {
   it("Renders pause-circle-o icon", () => {
     expect(
       wrapper
-        .find("MenuItem")
+        .find("span")
         .at(2)
         .find("Icon")
         .props().type
@@ -43,19 +43,10 @@ describe("TopHead", () => {
   it("Renders delete icon", () => {
     expect(
       wrapper
-        .find("MenuItem")
+        .find("span")
         .at(3)
         .find("Icon")
         .props().type
     ).toEqual("delete");
-  });
-
-  it("render a horizontal Menu", () => {
-    expect(
-      wrapper
-        .find("Menu")
-        .at(0)
-        .props().mode
-    ).toEqual("horizontal");
   });
 });

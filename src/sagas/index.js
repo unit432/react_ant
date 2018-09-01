@@ -32,11 +32,11 @@ export function* rpcCall() {
       yield put({ type: CLEAN_ARIA2_CMD });
       yield put({ type: FETCH_JOBS_SUCCESS });
       yield call(destoryMessage);
-      yield call(delay, 2000);
+      yield call(delay, 1000);
     } catch (error) {
       yield call(errorMessage, error.message);
       yield put({ type: FETCH_JOBS_FAILURE, error });
-      yield call(delay, 2000);
+      yield call(delay, 1000);
     }
   }
 }
