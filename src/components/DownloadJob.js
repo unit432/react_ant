@@ -41,6 +41,29 @@ class DownloadJob extends React.Component {
         </Tooltip>,
         <Button size="small" icon="setting" />
       ];
+    } else if (status === "paused") {
+      return [
+        <Tooltip placement="topLeft" title="Start Job">
+          <Button
+            size="small"
+            icon="play-circle"
+            onClick={() => {
+              this.props.start(gid);
+            }}
+          />
+        </Tooltip>,
+        <Tooltip placement="topLeft" title="Delete Job">
+          <Button
+            size="small"
+            type="danger"
+            icon="delete"
+            onClick={() => {
+              this.props.remove(gid);
+            }}
+          />
+        </Tooltip>,
+        <Button size="small" icon="setting" />
+      ];
     } else {
       return [
         <Tooltip placement="topLeft" title="Start Job">
