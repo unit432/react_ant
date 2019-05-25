@@ -1,5 +1,4 @@
-import { delay } from "redux-saga";
-import { put, call, all, select } from "redux-saga/effects";
+import { delay, put, call, all, select } from "redux-saga/effects";
 import { fetchData } from "../api/aria2c";
 import { message } from "antd";
 import { getAria2Command, getHostAddr, getPort } from "./selectors";
@@ -32,11 +31,11 @@ export function* rpcCall() {
       yield put({ type: CLEAN_ARIA2_CMD });
       yield put({ type: FETCH_JOBS_SUCCESS });
       yield call(destoryMessage);
-      yield call(delay, 1000);
+      yield delay(1000);
     } catch (error) {
       yield call(errorMessage, error.message);
       yield put({ type: FETCH_JOBS_FAILURE, error });
-      yield call(delay, 1000);
+      yield delay(1000);
     }
   }
 }

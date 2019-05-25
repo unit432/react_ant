@@ -51,7 +51,7 @@ describe("rpcCall", () => {
       .call(destoryMessage)
       .next()
 
-      .call(delay, 1000)
+      .delay(1000)
       .next()
 
       .finish()
@@ -74,7 +74,7 @@ describe("rpcCall", () => {
       .put({ type: FETCH_JOBS_FAILURE, error })
       .next()
 
-      .call(delay, 1000)
+      .delay(1000)
       .next()
 
       .finish()

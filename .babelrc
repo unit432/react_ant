@@ -1,12 +1,7 @@
 {
-  "presets": ["env", "react", "stage-0"],
+  "presets": ["@babel/preset-env", "@babel/preset-react"],
   "plugins": [
-    "syntax-dynamic-import",
-    "transform-object-rest-spread"
-  ],
-  "env": {
-    "production": {
-      "plugins": [["import", { "libraryName": "antd", "style": true }]]
-    }
-  }
+    "@babel/plugin-proposal-class-properties",
+    "@babel/plugin-transform-runtime"
+  ]
 }
